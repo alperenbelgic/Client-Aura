@@ -159,8 +159,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BusinessObjects\Class1.cs" />
     <Compile Include="BusinessObjects\Company.cs" />
+    <Compile Include="BusinessObjects\Customer.cs" />
+    <Compile Include="BusinessObjects\IIntegrationItem.cs" />
+    <Compile Include="BusinessObjects\Order.cs" />
     <Compile Include="BusinessObjects\Solution1DbContext.cs" />
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />

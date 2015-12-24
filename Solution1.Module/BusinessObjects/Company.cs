@@ -17,6 +17,7 @@ namespace Solution1.Module.BusinessObjects
     {
 
         [Key]
+        [Browsable(false)]
         public int Id { get; set; }
 
         public string  CompanyName { get; set; }

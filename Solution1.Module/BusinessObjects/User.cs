@@ -25,7 +25,7 @@ namespace Solution1.Module.BusinessObjects
             set;
         }
 
-        public Company Company { get; set; }
+        public virtual Company Company { get; set; }
 
         [FieldSize(255)]
         public string Email

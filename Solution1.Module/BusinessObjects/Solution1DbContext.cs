@@ -26,7 +26,6 @@ namespace  Solution1.Module.BusinessObjects {
 		public DbSet<ModuleInfo> ModulesInfo { get; set; }
 		public DbSet<Role> Roles { get; set; }
 		public DbSet<TypePermissionObject> TypePermissionObjects { get; set; }
-		public DbSet<TheUser> DefaultAppUsers { get; set; }
 
 		public DbSet<Event> Events { get; set; }
 		public DbSet<Resource> Resources { get; set; }
@@ -52,7 +51,13 @@ namespace  Solution1.Module.BusinessObjects {
         public DbSet<EFTrackingRecord> EFTrackingRecord { get; set; }
         public DbSet<EFWorkflowInstance> EFWorkflowInstance { get; set; }
         public DbSet<EFUserActivityVersion> EFUserActivityVersion { get; set; }
-        public DbSet<Class1> Class1 { get; set; }
+
+
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<TheUser> Users { get; set; }
+        public DbSet<Company> Companies { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
