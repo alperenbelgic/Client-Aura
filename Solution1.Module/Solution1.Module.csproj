@@ -264,6 +264,12 @@
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Tasks\customer.txt" />
+    <Content Include="Tasks\order item- detail page.txt" />
+    <Content Include="Tasks\order- detail page.txt" />
+    <Content Include="Tasks\product- detail page.txt" />
+    <Content Include="Tasks\user pass.txt" />
+    <Content Include="Tasks\validasyonlar.txt" />
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup />

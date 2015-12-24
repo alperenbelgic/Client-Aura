@@ -1,0 +1,7 @@
+YAPILACAKLAR
+integration source, user interface olsun
+company gorunur olmasin
+
+TAMAMLANDI
+company uyesi kaldirilsin
+company uyesi yeniden eklensin

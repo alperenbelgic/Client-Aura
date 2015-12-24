@@ -1,0 +1,2 @@
+admin olmayan tum kullanicilarin company si olmali
+admin ler order ekeleyemez

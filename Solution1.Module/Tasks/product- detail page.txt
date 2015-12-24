@@ -1,0 +1,4 @@
+YAPILACAKLAR
+Company kaldirilabilir
+Eklenirken Company otomatik set edilsin
+Integration code / source asagiya alinabilir
