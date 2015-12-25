@@ -29,28 +29,39 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.CompleteOrderAction = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.StartFeedbackProcess = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
+            this.StopProcessAndEdit = new DevExpress.ExpressApp.Actions.SimpleAction(this.components);
             // 
-            // CompleteOrderAction
+            // StartFeedbackProcess
             // 
-            this.CompleteOrderAction.Caption = "Complete Order";
-            this.CompleteOrderAction.ConfirmationMessage = null;
-            this.CompleteOrderAction.Id = "CompleteOrderAction";
-            this.CompleteOrderAction.TargetObjectType = typeof(Solution1.Module.BusinessObjects.Order);
-            this.CompleteOrderAction.TargetViewType = DevExpress.ExpressApp.ViewType.DetailView;
-            this.CompleteOrderAction.ToolTip = null;
-            this.CompleteOrderAction.TypeOfView = typeof(DevExpress.ExpressApp.DetailView);
-            this.CompleteOrderAction.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.CompleteOrderAction_Execute);
+            this.StartFeedbackProcess.Caption = "Start Feedback Process";
+            this.StartFeedbackProcess.ConfirmationMessage = null;
+            this.StartFeedbackProcess.Id = "StartFeedbackProcess";
+            this.StartFeedbackProcess.TargetObjectType = typeof(Solution1.Module.BusinessObjects.Order);
+            this.StartFeedbackProcess.TargetViewType = DevExpress.ExpressApp.ViewType.DetailView;
+            this.StartFeedbackProcess.ToolTip = null;
+            this.StartFeedbackProcess.TypeOfView = typeof(DevExpress.ExpressApp.DetailView);
+            this.StartFeedbackProcess.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.StartFeedbackProcessAction_Execute);
+            // 
+            // StopProcessAndEdit
+            // 
+            this.StopProcessAndEdit.Caption = "Stop Process and Edit";
+            this.StopProcessAndEdit.ConfirmationMessage = null;
+            this.StopProcessAndEdit.Id = "StopProcessAndEdit";
+            this.StopProcessAndEdit.ToolTip = null;
+            this.StopProcessAndEdit.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.StopProcessAndEdit_Execute);
             // 
             // OrderController
             // 
-            this.Actions.Add(this.CompleteOrderAction);
+            this.Actions.Add(this.StartFeedbackProcess);
+            this.Actions.Add(this.StopProcessAndEdit);
             this.TargetObjectType = typeof(Solution1.Module.BusinessObjects.Order);
 
         }
 
         #endregion
 
-        private DevExpress.ExpressApp.Actions.SimpleAction CompleteOrderAction;
+        private DevExpress.ExpressApp.Actions.SimpleAction StartFeedbackProcess;
+        private DevExpress.ExpressApp.Actions.SimpleAction StopProcessAndEdit;
     }
 }

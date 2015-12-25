@@ -23,7 +23,14 @@ namespace Solution1.Module.DatabaseUpdate
         {
             base.UpdateDatabaseAfterUpdateSchema();
 
+            CreateParameters();
+
+          
+
             var companies = CreateCompaniesProductsCustomers();
+
+            CreateMultipleChoiceOptionsDefinition(companies[0]);
+            CreateSurveyDefinition(companies[0]);
 
             TheUser sampleUser = ObjectSpace.FindObject<TheUser>(new BinaryOperator("UserName", "User"));
             if (sampleUser == null)
@@ -62,7 +69,30 @@ namespace Solution1.Module.DatabaseUpdate
             int b = i * i;
         }
 
+        private void CreateParameters()
+        {
+            // Answer Types
+            var multipleChoice = ObjectSpace.FindObject<Parameter>(
+                CriteriaOperator.And(new BinaryOperator("ParameterGroupKey", "AnswerType"), new BinaryOperator("ParameterKey", "MultipleChoice")));
 
+            if (multipleChoice == null)
+            {
+                multipleChoice = ObjectSpace.CreateObject<Parameter>();
+                multipleChoice.ParameterGroupKey = "AnswerType";
+                multipleChoice.ParameterKey = "MultipleChoice";
+                multipleChoice.ParameterName = "Multiple Choice";
+            }
+
+            var textQuestionType = ObjectSpace.FindObject<Parameter>(
+                CriteriaOperator.And(new BinaryOperator("ParameterGroupKey", "AnswerType"), new BinaryOperator("ParameterKey", "Text")));
+            if (textQuestionType == null)
+            {
+                textQuestionType = ObjectSpace.CreateObject<Parameter>();
+                textQuestionType.ParameterGroupKey = "AnswerType";
+                textQuestionType.ParameterKey = "Text";
+                textQuestionType.ParameterName = "Text";
+            }
+        }
 
         public override void UpdateDatabaseBeforeUpdateSchema()
         {
@@ -127,6 +157,7 @@ namespace Solution1.Module.DatabaseUpdate
 
             defaultRole.SetTypePermissionsRecursively<IBusinessObject>(SecurityOperations.FullAccess, DevExpress.ExpressApp.Security.Strategy.SecuritySystemModifier.Allow);
 
+            defaultRole.SetTypePermissionsRecursively<Parameter>(SecurityOperations.Read, DevExpress.ExpressApp.Security.Strategy.SecuritySystemModifier.Allow);
 
             defaultRole.TypePermissions.Add(CreateUserPermissions());
             defaultRole.TypePermissions.Add(CreateTypePermission<Role>(false, false));
@@ -166,7 +197,7 @@ namespace Solution1.Module.DatabaseUpdate
                 kliksaCustomerAyferBelgic.Email = "ayferbelgic@hotmail.com";
                 kliksaCustomerAyferBelgic.IntegrationSource = "User Interface";
 
-                ObjectSpace.CommitChanges();                
+                ObjectSpace.CommitChanges();
             }
 
             var leraFrescaCompany = ObjectSpace.FindObject<Company>(new BinaryOperator("CompanyName", "Lera Fresca"));
@@ -210,6 +241,47 @@ namespace Solution1.Module.DatabaseUpdate
                 kliksaCompany,
                 leraFrescaCompany
             };
+        }
+
+        private void CreateMultipleChoiceOptionsDefinition(Company company)
+        {
+            var mcod1 = this.ObjectSpace.FindObject<MultipleChoiceOptionsDefinition>(CriteriaOperator.And(
+                new BinaryOperator("Option1", "1"),
+                new BinaryOperator("Company.Id", company.Id)
+                ));
+            if (mcod1 == null)
+            {
+                mcod1 = this.ObjectSpace.CreateObject<MultipleChoiceOptionsDefinition>();
+                mcod1.Option1 = "1";
+                mcod1.Option2 = "2";
+                mcod1.Option3 = "3";
+                mcod1.Option4 = "4";
+                mcod1.Option5 = "5";
+                mcod1.Company = company;
+            }
+        }
+
+        public void CreateSurveyDefinition(Company company)
+        {
+            var surveyDefintion = this.ObjectSpace.FindObject<SurveyDefinition>(CriteriaOperator.And(
+                new BinaryOperator("Company.Id", company.Id),
+                new BinaryOperator("SurveyName", "Default")));
+            if (surveyDefintion == null)
+            {
+                surveyDefintion = this.ObjectSpace.CreateObject<SurveyDefinition>();
+                surveyDefintion.Company = company;
+                surveyDefintion.IsDefault = true;
+                surveyDefintion.SurveyName = "Default";
+                surveyDefintion.AddProductQuestions = true;
+                surveyDefintion.Questions = new List<QuestionDefinition>();
+
+                var question1 = this.ObjectSpace.CreateObject<QuestionDefinition>();
+                question1.QuestionText = "How likely are you to recommend [CompanyNameHere] to a friend or colleague?";
+                question1.AnswerType = this.ObjectSpace.FindObject<Parameter>(new BinaryOperator("ParameterKey", "MultipleChoice"));
+                question1.MultipleChoiceOptionsDefinition = this.ObjectSpace.FindObject<MultipleChoiceOptionsDefinition>(new BinaryOperator("Option1", "1"));
+
+                surveyDefintion.Questions.Add(question1);
+            }
         }
 
 

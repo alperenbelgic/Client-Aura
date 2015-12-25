@@ -54,8 +54,7 @@ namespace Solution1.Module.BusinessObjects
 
             if (this.Company == null)
             {
-                int companyId = UserHelper.GetCurrentUser().Company.Id;
-                this.Company = this.ObjectSpace.GetObjectByKey<Company>(companyId);
+                this.Company = UserHelper.GetUsersCompany(this.ObjectSpace);
             }
         }
 

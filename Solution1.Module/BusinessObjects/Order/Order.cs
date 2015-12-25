@@ -1,5 +1,6 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
+using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
-    public class Order : IIntegrationItem, IBusinessObject, IXafEntityObject, IObjectSpaceLink
+    public class Order : IIntegrationItem, IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
     {
         [Browsable(false)]
         [Key]
@@ -143,7 +144,12 @@ namespace Solution1.Module.BusinessObjects
                         this.OrderStatus = OrderStates.FeedbackReached;
                     }
                     break;
-
+                case OrderEvents.StopProcessAndEdit:
+                    if (this.OrderStatus == OrderStates.SurveySendingWaiting)
+                    {
+                        this.OrderStatus = OrderStates.Draft;
+                    }
+                    break;
                 default:
                     break;
             }
@@ -184,5 +190,6 @@ namespace Solution1.Module.BusinessObjects
         public const string OrderCreated = "OrderCreated";
         public const string SurveySendingTimeOccured = "SurveySendingTimeOccured";
         public const string SurveyAnswered = "SurveyAnswered";
+        public const string StopProcessAndEdit = "StopProcessAndEdit";
     }
 }

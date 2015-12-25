@@ -10,6 +10,18 @@
       </ActionContainer>
     </ActionToContainerMapping>
   </ActionDesign>
+  <BOModel>
+    <Class Name="Solution1.Module.BusinessObjects.ProductQuestionDefinition">
+      <OwnMembers>
+        <Member Name="AnswerType" DataSourceCriteria="[ParameterGroupKey] = 'AnswerType'" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Solution1.Module.BusinessObjects.QuestionDefinition">
+      <OwnMembers>
+        <Member Name="AnswerType" DataSourceCriteria="[ParameterGroupKey] = 'AnswerType'" />
+      </OwnMembers>
+    </Class>
+  </BOModel>
   <NavigationItems>
     <Items>
       <Item Id="Default" Visible="True" Caption="Menu" Index="0">
@@ -47,9 +59,7 @@
       <Item Id="Reports" Visible="False" />
     </Items>
   </NavigationItems>
-  <Options DataAccessMode="Server" LookupSmallCollectionItemCount="15">
-    <LayoutManagerOptions RequiredFieldMark="*" />
-  </Options>
+  <Options DataAccessMode="Server" LookupSmallCollectionItemCount="15" />
   <SchemaModules>
     <SchemaModule Name="SchedulerModuleBase" Version="15.2.7.0" IsNewNode="True" />
     <SchemaModule Name="SystemModule" Version="15.2.7.0" IsNewNode="True" />

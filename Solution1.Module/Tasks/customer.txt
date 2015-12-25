@@ -1,7 +1,12 @@
 YAPILACAKLAR
-integration source, user interface olsun
-company gorunur olmasin
+- ara obje eklensin, sorular icin
+- kutular tek kolon olabilir asagi dogru
+- email validasyonu
+- telefon numarasi validasyonu
+- zorunlu alanlar validasyonu
 
 TAMAMLANDI
-company uyesi kaldirilsin
-company uyesi yeniden eklensin
+- company uyesi kaldirilsin
+- company uyesi yeniden eklensin
+- integration source, user interface olsun
+- company gorunur olmasin

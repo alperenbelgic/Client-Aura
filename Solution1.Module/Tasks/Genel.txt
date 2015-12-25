@@ -1,0 +1,6 @@
+﻿YAPILACAKLAR
+- System alt menusu sadece admine gorunsun
+- info kontroller yapisi. basildiginda sayfayla alakali bilgilendirme icerigi goruntulenecek
+
+TAMAMLANANLAR
+- Parametreleri normal yetkilerdeki kullanicilar sadece gorebilsin, editleyemesin

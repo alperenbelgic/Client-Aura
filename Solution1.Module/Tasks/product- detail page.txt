@@ -1,4 +1,3 @@
 YAPILACAKLAR
-Company kaldirilabilir
-Eklenirken Company otomatik set edilsin
-Integration code / source asagiya alinabilir
+- ara obje eklensin, sorular icin
+- Integration code / source asagiya alinabilir

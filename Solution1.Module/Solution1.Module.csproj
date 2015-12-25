@@ -160,6 +160,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessObjects\General\IHaveIsDeletedMember.cs" />
     <Compile Include="BusinessObjects\Order\Company.cs" />
     <Compile Include="BusinessObjects\Order\Customer.cs" />
     <Compile Include="BusinessObjects\General\IBusinessObject.cs" />
@@ -264,10 +265,16 @@
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Tasks\customer list.txt" />
     <Content Include="Tasks\customer.txt" />
+    <Content Include="Tasks\Genel.txt" />
+    <Content Include="Tasks\MultipleChoice.txt" />
     <Content Include="Tasks\order item- detail page.txt" />
+    <Content Include="Tasks\Order List.txt" />
     <Content Include="Tasks\order- detail page.txt" />
     <Content Include="Tasks\product- detail page.txt" />
+    <Content Include="Tasks\Question Definition.txt" />
+    <Content Include="Tasks\SurveyDefinition.txt" />
     <Content Include="Tasks\user pass.txt" />
     <Content Include="Tasks\validasyonlar.txt" />
     <None Include="UnusableNodes2.xml">

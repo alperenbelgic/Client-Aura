@@ -25,6 +25,16 @@ namespace Solution1.Module.Controllers
     {
 
         private NewObjectViewController _NewObjectViewController = null;
+        private ModificationsController _ModificationsController = null;
+
+        private Order CurrentOrderObject
+        {
+            get
+            {
+                return this.View.CurrentObject as Order;
+
+            }
+        }
 
         public OrderController()
         {
@@ -36,12 +46,43 @@ namespace Solution1.Module.Controllers
             base.OnActivated();
             // Perform various tasks depending on the target View.
 
+            _ModificationsController = Frame.GetController<ModificationsController>();
+
             _NewObjectViewController = Frame.GetController<NewObjectViewController>();
             _NewObjectViewController.ObjectCreated += _NewObjectViewController_ObjectCreated;
 
-            SetSaveButtonCaption();
+            ArrangeUI();
+        }
+
+        private void ArrangeUI()
+        {
+            ArrangePropertyEditorEditibleMode();
 
             ArrangeActionVisibilitiies();
+
+            SetSaveButtonCaption();
+        }
+
+        private void ArrangePropertyEditorEditibleMode()
+        {
+            if (this.View is DetailView)
+            {
+                var propertyEditors = (this.View as DetailView).GetItems<PropertyEditor>();
+
+                foreach (var propertyEditor in propertyEditors)
+                {
+                    propertyEditor.AllowEdit.RemoveItem(GeneralKeys.ActionActiveKey);
+                }
+
+                if (this.CurrentOrderObject.OrderStatus != OrderStates.Draft)
+                {
+
+                    foreach (PropertyEditor propertyEditor in propertyEditors)
+                    {
+                        propertyEditor.AllowEdit.SetItemValue(GeneralKeys.ActionActiveKey, false);
+                    }
+                }
+            }
         }
 
         private void _NewObjectViewController_ObjectCreated(object sender, ObjectCreatedEventArgs e)
@@ -80,9 +121,9 @@ namespace Solution1.Module.Controllers
             base.OnDeactivated();
         }
 
-        private void CompleteOrderAction_Execute(object sender, SimpleActionExecuteEventArgs e)
+        private void StartFeedbackProcessAction_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-            
+
             var order = this.View.CurrentObject as Order;
 
             if (order != null)
@@ -111,6 +152,8 @@ namespace Solution1.Module.Controllers
                     this.Application.ShowInformationBox(informationMessage);
                 }
             }
+
+            ArrangeUI();
         }
 
         private void ArrangeActionVisibilitiies()
@@ -153,22 +196,24 @@ namespace Solution1.Module.Controllers
 
         private void MakeActionsVisibleForSurveySendingWaiting()
         {
-
+            this.StopProcessAndEdit.Active.SetItemValue(GeneralKeys.ActionActiveKey, true);
         }
 
         private void MakeActionsVisibleForDraftState()
         {
-            var modificationsController = Frame.GetController<ModificationsController>();
-            modificationsController.SaveAction.Active.SetItemValue(GeneralKeys.ActionActiveKey, true);
+            this.StartFeedbackProcess.Active.SetItemValue(GeneralKeys.ActionActiveKey, true);
+
+            _ModificationsController.SaveAction.Active.SetItemValue(GeneralKeys.ActionActiveKey, true);
         }
 
         private void HideAllActions()
         {
-            //var modificationsController = Frame.GetController<ModificationsController>();
-            //modificationsController.SaveAction.Active.SetItemValue(GeneralKeys.ActionActiveKey, false);
+            _ModificationsController.SaveAction.Active.SetItemValue(GeneralKeys.ActionActiveKey, false);
 
-            //var newObjectViewController = Frame.GetController<NewObjectViewController>();
-            //newObjectViewController.NewObjectAction.Active.SetItemValue(GeneralKeys.ActionActiveKey, false);
+            this.StartFeedbackProcess.Active.SetItemValue(GeneralKeys.ActionActiveKey, false);
+
+            this.StopProcessAndEdit.Active.SetItemValue(GeneralKeys.ActionActiveKey, false);
+
         }
 
         private void SetSaveButtonCaption()
@@ -187,7 +232,15 @@ namespace Solution1.Module.Controllers
             modificationsController.SaveAction.Caption = GeneralKeys.SaveButtonDefaultCaption;
         }
 
+        private void StopProcessAndEdit_Execute(object sender, SimpleActionExecuteEventArgs e)
+        {
+            if (this.CurrentOrderObject != null)
+            {
+                var result = this.CurrentOrderObject.SendOrderEvent(OrderEvents.StopProcessAndEdit);
 
+                ArrangeUI();
+            }
+        }
     }
 
 

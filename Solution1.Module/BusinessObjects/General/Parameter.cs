@@ -11,7 +11,7 @@ namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
 
-    public class Parameter : IBusinessObject
+    public class Parameter 
     {
         [Browsable(false)]
         [Key]

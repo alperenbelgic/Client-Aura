@@ -1,0 +1,5 @@
+﻿YAPILACAKLAR
+-integration source code kolonlari kalksin 
+-is deleted'lar listelenmesin
+
+TAMAMLANANLAR

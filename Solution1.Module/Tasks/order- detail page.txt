@@ -1,25 +1,32 @@
 YAPILACAKLAR
-order item length 0 kontrolu
-save de, tamamlanmasi icin complete butonu tiklansin message box gosterilsin
-ikon ekle, save ve new icin
-silindi flag ekle
-delete action lar override et silinenler gorunmesin
-object space, is deleted property leri gorunmesin ( attribute ile )
-order status metni user friendly
-order status ui controlu kaymis, duzelsin 
-order complete edildiginde, su kadar gun sonra survey gonderilecektir mesaji ciksin.
-action grup ile gerekli seyler en basta olsun
-tab daki order item ler ve diger kisimlardakiler products olarak degistirilebilir
-genel: state machine menusunu kaldir
-survey sending date alani company den beslensin
-gonderilecek anket secilsin
+- start feedback process tiklandiktan sonra, popup'ta ozet bilgiler gelsin, su kadar gun sonra su isimli tanimi olan survey gonderilecektir diye, bu ayarlari survey tabindan degistirebilirsiniz desin
+- alta survey tab ekle
+	- survey definition olsun default secimli gelsin, kac gun sonra gonderilecegi ayrica secilsin
+- akisin tamamlanmasi
+	+ silinmesin, is deleted 1 olsun
+	+ geri al action i
+	+ action gorunurlukleri	
+- order status metni user friendly, belki view tepesine yazilabilir ilgili yerden kaldirilip
+- tab daki order item ler ve diger kisimlardakiler products olarak degistirilebilir
+- vakti gelen survey'lerin gonderilmesi batch isi
+- response'larin beslenmesi servisi
 
 TAMAMLANANLAR
-order date yeni order ise o zamanin tarihi olmali
-company arka planda otomatik set edilmeli
-company gorunmemeli, cunku zaten tekil bir customer icin gosteriliyor
-integration source, integration id daha asagida gorunebilir
-web arayuzden yeni olustururken integration source'a manuel ya da user falan yazilabilir.
-customer secilirken company si tutanlar secilebilmeli
-fazla alakasiz moduller ve action butonlari kaldirirlsin
-order status set ediliyor ama view da bir sonraki posttan sonra goruntuleniyor, duzelsin
+- order item length 0 kontrolu
+- order date yeni order ise o zamanin tarihi olmali
+- company arka planda otomatik set edilmeli
+- company gorunmemeli, cunku zaten tekil bir customer icin gosteriliyor
+- integration source, integration id daha asagida gorunebilir
+- web arayuzden yeni olustururken integration source'a manuel ya da user falan yazilabilir.
+- customer secilirken company si tutanlar secilebilmeli
+- fazla alakasiz moduller ve action butonlari kaldirirlsin
+- order status set ediliyor ama view da bir sonraki posttan sonra goruntuleniyor, duzelsin
+- silindi flag ekle
+- object space, is deleted property leri gorunmesin ( attribute ile )
+- genel: state machine menusunu kaldir
+- order status ui controlu kaymis, duzelsin 
+
+DROP/ERTELENDI
+- ikon ekle, save ve new icin
+- order items tekrarlayan product validasyonu
+- action grup ile gerekli seyler en basta olsun

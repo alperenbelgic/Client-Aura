@@ -190,6 +190,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DeleteController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\DeleteController.Designer.cs">
+      <DependentUpon>DeleteController.cs</DependentUpon>
+    </Compile>
     <Compile Include="WebModule.cs">
       <SubType>Component</SubType>
     </Compile>

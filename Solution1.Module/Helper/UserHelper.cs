@@ -16,5 +16,28 @@ namespace Solution1.Module.Helper
             return SecuritySystem.CurrentUser as TheUser;
         }
 
+        public static Company GetUsersCompany(IObjectSpace objectSpace)
+        {
+            var user = GetCurrentUser();
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            try
+            {
+                int companyId = user.Company.Id;
+
+                var company = objectSpace.GetObjectByKey<Company>(companyId);
+
+                return company;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
     }
 }

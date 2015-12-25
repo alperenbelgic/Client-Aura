@@ -1,0 +1,6 @@
+﻿YAPILACAKLAR
+- anketlerde preview yapisi
+- is default alani degistirilemez olsun, action ile is default 1 yapilsin, diger anketlerin is default lari kaldirilsin
+- survey kac gun sonra gonderilecek alani eklensin
+
+TAMAMLANANLAR
