@@ -10,4 +10,12 @@ namespace Solution1.Module.Helper
     {
         public static string Administrators = "Administrators";
     }
+
+    public static class GeneralKeys
+    {
+        public static string ActionActiveKey = "CA_ActionActiveKey";
+
+        public static string SaveButtonDefaultCaption = "Save";
+
+    }
 }

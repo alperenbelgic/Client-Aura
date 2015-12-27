@@ -95,6 +95,7 @@
     <Reference Include="DevExpress.ExpressApp.ViewVariantsModule.v15.2, Version=15.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
+    <Reference Include="DevExpress.ExpressApp.Web.v15.2, Version=15.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.ExpressApp.Workflow.v15.2, Version=15.2.7.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
     </Reference>
@@ -167,7 +168,20 @@
     <Compile Include="BusinessObjects\OrderItem.cs" />
     <Compile Include="BusinessObjects\Product.cs" />
     <Compile Include="BusinessObjects\Solution1DbContext.cs" />
+    <Compile Include="BusinessObjects\SystemObjects\Parameter.cs" />
     <Compile Include="BusinessObjects\User.cs" />
+    <Compile Include="Controllers\GeneralControllers\ActionContainerCustomiserController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\GeneralControllers\ActionContainerCustomiserController.Designer.cs">
+      <DependentUpon>ActionContainerCustomiserController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\GeneralControllers\ActionVisibilityController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\GeneralControllers\ActionVisibilityController.Designer.cs">
+      <DependentUpon>ActionVisibilityController.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\GeneralControllers\CompanyFilterListViewController.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -181,7 +195,10 @@
       <DependentUpon>OrderController.cs</DependentUpon>
     </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
+    <Compile Include="Helper\ApplicationHelper.cs" />
     <Compile Include="Helper\Constants.cs" />
+    <Compile Include="Helper\Result.cs" />
+    <Compile Include="Helper\UserHelper.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -194,7 +211,9 @@
     <EmbeddedResource Include="Controllers\OrderController.resx">
       <DependentUpon>OrderController.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
+    <EmbeddedResource Include="Model.DesignedDiffs.xafml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Module.resx">
       <SubType>Designer</SubType>
       <DependentUpon>Module.cs</DependentUpon>
@@ -223,6 +242,7 @@
     <None Include="FunctionalTests\config.xml" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Images\ca logo.bmp" />
     <None Include="UnusableNodes.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>

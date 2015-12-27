@@ -45,6 +45,7 @@
             // OrderController
             // 
             this.Actions.Add(this.CompleteOrderAction);
+            this.TargetObjectType = typeof(Solution1.Module.BusinessObjects.Order);
 
         }
 

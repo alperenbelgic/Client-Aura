@@ -19,6 +19,7 @@ namespace Solution1.Web {
         protected void Application_Start(Object sender, EventArgs e) {
             IsGrantedAdapter.Enable(new EFCachedRequestSecurityAdapterProvider());
             ASPxWebControl.CallbackError += new EventHandler(Application_Error);
+            DevExpress.ExpressApp.ScriptRecorder.ScriptRecorderControllerBase.ScriptRecorderEnabled = false;
 #if EASYTEST
             DevExpress.ExpressApp.Web.TestScripts.TestScriptsManager.EasyTestEnabled = true;
 #endif
@@ -26,7 +27,7 @@ namespace Solution1.Web {
         protected void Session_Start(Object sender, EventArgs e) {
             WebApplication.SetInstance(Session, new Solution1AspNetApplication());
             WebApplication.Instance.SwitchToNewStyle();
-
+            WebApplication.Instance.Settings.DefaultVerticalTemplateContentPath = "UIControls/Templates/DefaultVerticalTemplateContentNew.ascx";
             WebApplication.Instance.LinkNewObjectToParentImmediately = true;
             WebApplication.Instance.Title = "Client Aura";
 

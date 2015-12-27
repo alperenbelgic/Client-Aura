@@ -1,21 +1,32 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application Title="Solution1" Logo="ExpressAppLogo">
+<Application Title="Client Aura Management App" Company="Client Aura" Copyright="" Description="" AboutInfoString="{0:ProductName}&lt;br&gt;{0:Version}">
+  <ActionDesign>
+    <ActionToContainerMapping>
+      <ActionContainer Id="Save">
+        <ActionLink ActionId="Save" Removed="True" />
+      </ActionContainer>
+      <ActionContainer Id="Unspecified">
+        <ActionLink ActionId="Save" Index="3" IsNewNode="True" />
+      </ActionContainer>
+    </ActionToContainerMapping>
+  </ActionDesign>
   <NavigationItems>
     <Items>
-      <Item Id="Default" Visible="True">
+      <Item Id="Default" Visible="True" Caption="Menu">
         <Items>
-          <Item Id="Company_ListView" ImageName="" />
-          <Item Id="Customer_ListView" ImageName="BO_Customer" />
+          <Item Id="Order_ListView" ImageName="BO_Order" Index="0" Caption="Orders" />
+          <Item Id="Customer_ListView" ImageName="BO_Customer" Caption="Customers" Index="1" />
+          <Item Id="Product_ListView" Caption="Products" Index="2" />
+          <Item Id="Company_ListView" ImageName="" Index="3" Visible="False" />
           <Item Id="Event_ListView" Visible="False" />
-          <Item Id="Order_ListView" ImageName="BO_Order" />
+          <Item Id="OrderItem_ListView" Visible="False" />
         </Items>
       </Item>
       <Item Id="KPI" Visible="False" />
       <Item Id="Reports" Visible="False" />
-      <Item Id="State Machine" Visible="False" />
     </Items>
   </NavigationItems>
-  <Options>
+  <Options DataAccessMode="Server" LookupSmallCollectionItemCount="15">
     <LayoutManagerOptions RequiredFieldMark="*" />
   </Options>
   <SchemaModules>
@@ -40,6 +51,44 @@
         <ColumnInfo Id="Period" Index="10" Width="48" />
       </Columns>
     </ListView>
+    <DetailView Id="Order_DetailView">
+      <Items>
+        <PropertyEditor Id="OrderStatus" AllowEdit="False" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main" RelativeSize="100">
+          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
+            <LayoutGroup Id="Order" RelativeSize="100">
+              <LayoutGroup Id="Order_col1" RelativeSize="99.8266897746967">
+                <LayoutItem Id="OrderStatus" ViewItem="OrderStatus" Index="0" IsNewNode="True" />
+                <LayoutItem Id="Customer" RelativeSize="50" Index="1" />
+                <LayoutItem Id="OrderDate" RelativeSize="50" Index="2" />
+                <LayoutItem Id="Company" Removed="True" />
+                <LayoutItem Id="IntegrationSource" Removed="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="Order_col2" RelativeSize="0.1733102253032929" Caption="Order_col2" Direction="Horizontal" Removed="True">
+                <LayoutItem Id="IntegrationCode" RelativeSize="100" Index="0" Removed="True" />
+                <LayoutItem Id="IsDeleted" Removed="True" />
+                <LayoutItem Id="ObjectSpace" Removed="True" />
+                <LayoutItem Id="OrderStatus" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+          <TabbedGroup Id="Item1" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
+            <LayoutGroup Id="OrderItems_Group" ShowCaption="True" Caption="Products" Index="0" RelativeSize="100" IsNewNode="True">
+              <LayoutItem Id="Products" ViewItem="OrderItems" Index="0" RelativeSize="100" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" Caption="Integration Info" IsNewNode="True">
+              <LayoutItem Id="IntegrationSource" ViewItem="IntegrationSource" Index="0" RelativeSize="10.223642172523961" IsNewNode="True" />
+              <LayoutItem Id="IntegrationCode" ViewItem="IntegrationCode" Index="1" RelativeSize="89.776357827476033" IsNewNode="True" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutGroup Id="OrderItems_Group" Direction="Vertical" RelativeSize="66.739606126914666" Removed="True">
+            <LayoutItem Id="OrderItems" RelativeSize="100" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="Order_OrderItems_ListView" AllowUnlink="False" AllowLink="False" />
     <DetailView Id="ReportDataV2_DetailView">
       <Layout>
@@ -55,99 +104,5 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <DetailView Id="StateMachine_DetailView">
-      <Layout>
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="StateMachine">
-              <LayoutGroup Id="StateMachine_col1">
-                <LayoutItem Id="Name" Index="0" ViewItem="Name" />
-                <LayoutItem Id="TargetObjectType" Index="1" ViewItem="TargetObjectType" />
-              </LayoutGroup>
-              <LayoutGroup Id="StateMachine_col2">
-                <LayoutItem Id="StatePropertyName" Index="1" ViewItem="StatePropertyName" />
-                <LayoutItem Id="ExpandActionsInDetailView" Index="2" ViewItem="ExpandActionsInDetailView" />
-              </LayoutGroup>
-            </LayoutGroup>
-          </LayoutGroup>
-          <LayoutGroup Id="States_Group">
-            <LayoutItem Id="States" ViewItem="States" />
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
-    <ListView Id="StateMachine_ListView">
-      <Columns>
-        <ColumnInfo Id="Active" Index="1" />
-        <ColumnInfo Id="TargetObjectType" Index="2" />
-        <ColumnInfo Id="StatePropertyName" Index="3" />
-        <ColumnInfo Id="StartState" Index="4" />
-        <ColumnInfo Id="ExpandActionsInDetailView" Index="5" />
-      </Columns>
-    </ListView>
-    <DetailView Id="StateMachineAppearance_DetailView">
-      <Layout>
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="StateMachineAppearance">
-              <LayoutGroup Id="StateMachineAppearance_col1">
-                <LayoutItem Id="AppearanceItemType" Index="0" ViewItem="AppearanceItemType" />
-                <LayoutItem Id="Context" Index="1" ViewItem="Context" />
-                <LayoutItem Id="TargetItems" Index="2" ViewItem="TargetItems" />
-                <LayoutItem Id="Priority" ViewItem="Priority" Index="3" IsNewNode="True" />
-                <LayoutItem Id="FontColor" Index="4" ViewItem="FontColor" />
-                <LayoutItem Id="BackColor" ViewItem="BackColor" Removed="True" />
-              </LayoutGroup>
-              <LayoutGroup Id="StateMachineAppearance_col2">
-                <LayoutItem Id="BackColor" ViewItem="BackColor" Index="0" IsNewNode="True" />
-                <LayoutItem Id="FontStyle" Index="1" ViewItem="FontStyle" />
-                <LayoutItem Id="Enabled" Index="2" ViewItem="Enabled" />
-                <LayoutItem Id="Visibility" Index="3" ViewItem="Visibility" />
-                <LayoutItem Id="Priority" ViewItem="Priority" Removed="True" />
-              </LayoutGroup>
-            </LayoutGroup>
-          </LayoutGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
-    <ListView Id="StateMachineState_Appearances_ListView">
-      <Columns>
-        <ColumnInfo Id="AppearanceItemType" Index="0" />
-        <ColumnInfo Id="Context" Index="1" />
-        <ColumnInfo Id="TargetItems" Index="2" />
-        <ColumnInfo Id="Priority" Index="3" />
-        <ColumnInfo Id="FontColor" Index="4" />
-        <ColumnInfo Id="BackColor" Index="5" />
-        <ColumnInfo Id="Enabled" Index="7" />
-        <ColumnInfo Id="Visibility" Index="8" />
-      </Columns>
-    </ListView>
-    <DetailView Id="StateMachineState_DetailView">
-      <Layout>
-        <LayoutGroup Id="Main">
-          <LayoutGroup Id="SimpleEditors">
-            <LayoutGroup Id="StateMachineState">
-              <LayoutItem Id="Caption" Index="0" ViewItem="Caption" />
-              <LayoutItem Id="Marker" Index="1" ViewItem="Marker" />
-            </LayoutGroup>
-          </LayoutGroup>
-          <TabbedGroup Id="Tabs">
-            <LayoutGroup Id="Transitions" TextAlignMode="AlignLocal" Index="0">
-              <LayoutItem Id="Transitions" TextAlignMode="AutoSize" ViewItem="Transitions" />
-            </LayoutGroup>
-            <LayoutGroup Id="Appearances" TextAlignMode="AlignLocal" Index="1">
-              <LayoutItem Id="Appearances" TextAlignMode="AutoSize" ViewItem="Appearances" />
-            </LayoutGroup>
-          </TabbedGroup>
-        </LayoutGroup>
-      </Layout>
-    </DetailView>
-    <ListView Id="StateMachineState_Transitions_ListView">
-      <Columns>
-        <ColumnInfo Id="TargetState" Index="1" />
-        <ColumnInfo Id="Index" Index="2" />
-        <ColumnInfo Id="SaveAndCloseView" Index="3" />
-      </Columns>
-    </ListView>
   </Views>
 </Application>

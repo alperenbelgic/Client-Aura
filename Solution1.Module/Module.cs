@@ -15,9 +15,7 @@ using DevExpress.ExpressApp.Model.DomainLogics;
 using DevExpress.ExpressApp.Model.NodeGenerators;
 using System.Data.Entity;
 using Solution1.Module.BusinessObjects;
-using DevExpress.ExpressApp.StateMachine;
 using DevExpress.Persistent.BaseImpl.EF.Kpi;
-using DevExpress.Persistent.BaseImpl.EF.StateMachine;
 using DevExpress.ExpressApp.ReportsV2;
 
 namespace Solution1.Module {
@@ -47,10 +45,6 @@ namespace Solution1.Module {
 			AdditionalExportedTypes.Add(typeof(KpiHistoryItem));
 			AdditionalExportedTypes.Add(typeof(KpiInstance));
 			AdditionalExportedTypes.Add(typeof(KpiScorecard));
-			AdditionalExportedTypes.Add(typeof(StateMachine));
-			AdditionalExportedTypes.Add(typeof(StateMachineTransition));
-			AdditionalExportedTypes.Add(typeof(StateMachineAppearance));
-			AdditionalExportedTypes.Add(typeof(StateMachineState));
         }
         public override IEnumerable<ModuleUpdater> GetModuleUpdaters(IObjectSpace objectSpace, Version versionFromDB) {
             ModuleUpdater updater = new DatabaseUpdate.Updater(objectSpace, versionFromDB);
@@ -62,8 +56,6 @@ namespace Solution1.Module {
         }
         public override void Setup(ApplicationModulesManager moduleManager) {
             base.Setup(moduleManager);
-            StateMachineModule stateMachineModule = moduleManager.Modules.FindModule<StateMachineModule>();
-            stateMachineModule.StateMachineStorageType = typeof(StateMachine);
 			ReportsModuleV2 reportModule = moduleManager.Modules.FindModule<ReportsModuleV2>();
             reportModule.ReportDataType = typeof(DevExpress.Persistent.BaseImpl.EF.ReportDataV2);
 		}

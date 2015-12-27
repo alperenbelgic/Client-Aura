@@ -8,6 +8,7 @@ using DevExpress.ExpressApp.Security;
 using DevExpress.ExpressApp.EF;
 using DevExpress.Persistent.BaseImpl.EF;
 using Solution1.Module.BusinessObjects;
+using System.Collections.Generic;
 
 namespace Solution1.Module.DatabaseUpdate
 {
@@ -21,17 +22,15 @@ namespace Solution1.Module.DatabaseUpdate
         public override void UpdateDatabaseAfterUpdateSchema()
         {
             base.UpdateDatabaseAfterUpdateSchema();
-            //string name = "MyName";
-            //EntityObject1 theObject = ObjectSpace.FindObject<EntityObject1>(CriteriaOperator.Parse("Name=?", name));
-            //if(theObject == null) {
-            //    theObject = ObjectSpace.CreateObject<EntityObject1>();
-            //    theObject.Name = name;
-            //}
+
+            var companies = CreateCompaniesProductsCustomers();
+
             TheUser sampleUser = ObjectSpace.FindObject<TheUser>(new BinaryOperator("UserName", "User"));
             if (sampleUser == null)
             {
                 sampleUser = ObjectSpace.CreateObject<TheUser>();
                 sampleUser.UserName = "User";
+                sampleUser.Company = companies[0];
                 sampleUser.SetPassword("p0");
             }
             Role defaultRole = CreateDefaultRole();
@@ -57,6 +56,10 @@ namespace Solution1.Module.DatabaseUpdate
             userAdmin.Roles.Add(adminRole);
 
             ObjectSpace.CommitChanges(); //This line persists created object(s).
+
+            // sil burayi sonra
+            int i = 33;
+            int b = i * i;
         }
 
 
@@ -128,5 +131,87 @@ namespace Solution1.Module.DatabaseUpdate
             defaultRole.TypePermissions.Add(CreateUserPermissions());
             defaultRole.TypePermissions.Add(CreateTypePermission<Role>(false, false));
         }
+
+        private List<Company> CreateCompaniesProductsCustomers()
+        {
+            var kliksaCompany = ObjectSpace.FindObject<Company>(new BinaryOperator("CompanyName", "Kliksa"));
+            if (kliksaCompany == null)
+            {
+                kliksaCompany = ObjectSpace.CreateObject<Company>();
+
+                kliksaCompany.CompanyName = "Kliksa";
+                kliksaCompany.IsCompanyActive = true;
+                ObjectSpace.CommitChanges();
+
+                var sonyTvProduct = ObjectSpace.CreateObject<Product>();
+                sonyTvProduct.ProductName = "Sony Bravia 40' TV";
+                sonyTvProduct.Company = kliksaCompany;
+                sonyTvProduct.IntegrationSource = "User Interface";
+
+                var bekoRefrigiratorProduct = ObjectSpace.CreateObject<Product>();
+                bekoRefrigiratorProduct.ProductName = "Beko Nofrost Refrigerator";
+                bekoRefrigiratorProduct.Company = kliksaCompany;
+                bekoRefrigiratorProduct.IntegrationSource = "User Interface";
+
+
+                var kliksaCustomerAlperenBelgic = ObjectSpace.CreateObject<Customer>();
+                kliksaCustomerAlperenBelgic.CustomerName = "Alperen Belgic";
+                kliksaCustomerAlperenBelgic.Company = kliksaCompany;
+                kliksaCustomerAlperenBelgic.Email = "alperenbelgic@outlook.com";
+                kliksaCustomerAlperenBelgic.IntegrationSource = "User Interface";
+
+                var kliksaCustomerAyferBelgic = ObjectSpace.CreateObject<Customer>();
+                kliksaCustomerAyferBelgic.CustomerName = "Ayfer Belgic";
+                kliksaCustomerAyferBelgic.Company = kliksaCompany;
+                kliksaCustomerAyferBelgic.Email = "ayferbelgic@hotmail.com";
+                kliksaCustomerAyferBelgic.IntegrationSource = "User Interface";
+
+                ObjectSpace.CommitChanges();                
+            }
+
+            var leraFrescaCompany = ObjectSpace.FindObject<Company>(new BinaryOperator("CompanyName", "Lera Fresca"));
+            if (leraFrescaCompany == null)
+            {
+                leraFrescaCompany = ObjectSpace.CreateObject<Company>();
+
+                leraFrescaCompany.CompanyName = "Lera Fresca";
+                leraFrescaCompany.IsCompanyActive = true;
+
+                ObjectSpace.CommitChanges();
+
+                var iceCreamProduct = ObjectSpace.CreateObject<Product>();
+                iceCreamProduct.ProductName = "Lera Fresca Ice Cream ";
+                iceCreamProduct.Company = leraFrescaCompany;
+                iceCreamProduct.IntegrationSource = "User Interface";
+
+                var milkBottledProduct = ObjectSpace.CreateObject<Product>();
+                milkBottledProduct.ProductName = "Milk Bottled 1lt";
+                milkBottledProduct.Company = leraFrescaCompany;
+                milkBottledProduct.IntegrationSource = "User Interface";
+
+
+                var leraFrescaCustomerPelinMezrea = ObjectSpace.CreateObject<Customer>();
+                leraFrescaCustomerPelinMezrea.CustomerName = "Pelin Elif Mezrea Belgic";
+                leraFrescaCustomerPelinMezrea.Company = leraFrescaCompany;
+                leraFrescaCustomerPelinMezrea.Email = "pelinelifmezrea@gmail.com";
+                leraFrescaCustomerPelinMezrea.IntegrationSource = "User Interface";
+
+                var leraFrescaCustomerBarisBugraBelgic = ObjectSpace.CreateObject<Customer>();
+                leraFrescaCustomerBarisBugraBelgic.CustomerName = "Baris Bugra Belgic";
+                leraFrescaCustomerBarisBugraBelgic.Company = leraFrescaCompany;
+                leraFrescaCustomerBarisBugraBelgic.Email = "barisbugra@yahoo.com";
+                leraFrescaCustomerBarisBugraBelgic.IntegrationSource = "User Interface";
+
+                ObjectSpace.CommitChanges();
+            }
+
+
+            return new List<Company>() {
+                kliksaCompany,
+                leraFrescaCompany
+            };
+        }
+
+
     }
 }

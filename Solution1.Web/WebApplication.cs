@@ -37,7 +37,6 @@ namespace Solution1.Web {
         private DevExpress.ExpressApp.Scheduler.Web.SchedulerAspNetModule schedulerAspNetModule;
         private DevExpress.ExpressApp.ScriptRecorder.ScriptRecorderModuleBase scriptRecorderModuleBase;
         private DevExpress.ExpressApp.ScriptRecorder.Web.ScriptRecorderAspNetModule scriptRecorderAspNetModule;
-        private DevExpress.ExpressApp.StateMachine.StateMachineModule stateMachineModule;
         private DevExpress.ExpressApp.TreeListEditors.TreeListEditorsModuleBase treeListEditorsModuleBase;
         private DevExpress.ExpressApp.TreeListEditors.Web.TreeListEditorsAspNetModule treeListEditorsAspNetModule;
         private DevExpress.ExpressApp.Validation.ValidationModule validationModule;
@@ -107,7 +106,6 @@ namespace Solution1.Web {
             this.schedulerAspNetModule = new DevExpress.ExpressApp.Scheduler.Web.SchedulerAspNetModule();
             this.scriptRecorderModuleBase = new DevExpress.ExpressApp.ScriptRecorder.ScriptRecorderModuleBase();
             this.scriptRecorderAspNetModule = new DevExpress.ExpressApp.ScriptRecorder.Web.ScriptRecorderAspNetModule();
-            this.stateMachineModule = new DevExpress.ExpressApp.StateMachine.StateMachineModule();
             this.treeListEditorsModuleBase = new DevExpress.ExpressApp.TreeListEditors.TreeListEditorsModuleBase();
             this.treeListEditorsAspNetModule = new DevExpress.ExpressApp.TreeListEditors.Web.TreeListEditorsAspNetModule();
             this.validationModule = new DevExpress.ExpressApp.Validation.ValidationModule();
@@ -143,10 +141,6 @@ namespace Solution1.Web {
             // 
             this.reportsAspNetModuleV2.ReportViewerType = DevExpress.ExpressApp.ReportsV2.Web.ReportViewerTypes.HTML5;
             this.reportsAspNetModuleV2.ShowFormatSpecificExportActions = true;
-            // 
-            // stateMachineModule
-            // 
-            this.stateMachineModule.StateMachineStorageType = typeof(DevExpress.ExpressApp.StateMachine.Xpo.XpoStateMachine);
             // 
             // validationModule
             // 
@@ -195,7 +189,6 @@ namespace Solution1.Web {
             this.Modules.Add(this.reportsModuleV2);
             this.Modules.Add(this.schedulerModuleBase);
             this.Modules.Add(this.scriptRecorderModuleBase);
-            this.Modules.Add(this.stateMachineModule);
             this.Modules.Add(this.treeListEditorsModuleBase);
             this.Modules.Add(this.viewVariantsModule);
             this.Modules.Add(this.workflowModule);

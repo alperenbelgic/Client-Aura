@@ -258,6 +258,7 @@
     <Content Include="Error.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Images\Logo.png" />
+    <Content Include="Images\Logo2.png" />
     <Content Include="Login.aspx" />
   </ItemGroup>
   <ItemGroup>
@@ -270,8 +271,24 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helper\InfromationBoxHelper.cs" />
+    <Compile Include="Helper\SessionHelper.cs" />
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UIControls\Templates\DefaultVerticalTemplateContentNew.ascx.cs">
+      <DependentUpon>DefaultVerticalTemplateContentNew.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UIControls\Templates\DefaultVerticalTemplateContentNew.ascx.designer.cs">
+      <DependentUpon>DefaultVerticalTemplateContentNew.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="UIControls\UserControls\InformationBox.ascx.cs">
+      <DependentUpon>InformationBox.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UIControls\UserControls\InformationBox.ascx.designer.cs">
+      <DependentUpon>InformationBox.ascx</DependentUpon>
     </Compile>
     <Compile Include="WebApplication.cs">
       <SubType>Component</SubType>
@@ -289,6 +306,9 @@
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WebApplicationPartial.cs">
+      <SubType>Component</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\licenses.licx" />
@@ -316,6 +336,8 @@
     <Content Include="Model.Desktop.xafml" />
     <Content Include="Model.Tablet.xafml" />
     <None Include="ReadMe.txt" />
+    <Content Include="UIControls\Templates\DefaultVerticalTemplateContentNew.ascx" />
+    <Content Include="UIControls\UserControls\InformationBox.ascx" />
     <Content Include="Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -327,6 +349,7 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
