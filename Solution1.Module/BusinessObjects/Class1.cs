@@ -19,5 +19,7 @@ namespace Solution1.Module.BusinessObjects
         public int MyProperty { get; set; }
 
         public string MyProperty2 { get; set; }
+
+        public int MyProperty3 { get; set; }
     }
 }
