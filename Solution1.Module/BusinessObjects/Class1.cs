@@ -20,6 +20,6 @@ namespace Solution1.Module.BusinessObjects
 
         public string MyProperty2 { get; set; }
 
-        public int MyProperty3 { get; set; }
+        public int MyProperty3 { get; set; } 
     }
 }
