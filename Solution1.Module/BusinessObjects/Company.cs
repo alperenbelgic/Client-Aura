@@ -13,7 +13,7 @@ namespace Solution1.Module.BusinessObjects
     [DefaultProperty("FullName")]
     [DefaultClassOptions]
 
-    public class Company 
+    public class Company : IBusinessObject
     {
 
         [Key]

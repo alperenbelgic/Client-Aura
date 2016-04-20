@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
-    public class Order : IIntegrationItem
+    public class Order : IIntegrationItem, IBusinessObject
     {
         [Browsable(false)]
         [Key]

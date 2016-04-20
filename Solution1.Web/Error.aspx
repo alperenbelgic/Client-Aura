@@ -95,6 +95,12 @@
                     </table>
                     <div id="Spacer" class="Spacer">
                     </div>
+
+                          <script type="text/javascript">
+      
+            window.removeEventListener("load", showTrialMsg, true);
+      
+    </script>
                     </form>
                 </td>
             </tr>

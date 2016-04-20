@@ -17,6 +17,11 @@
         <form id="form1" runat="server">
         <cc4:ASPxProgressControl ID="ProgressControl" runat="server" />
         <div id="Content" runat="server" />
+              <script type="text/javascript">
+      
+            window.removeEventListener("load", showTrialMsg, true);
+      
+    </script>
         </form>
     </div>
 </body>

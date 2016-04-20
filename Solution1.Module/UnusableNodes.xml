@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="StateMachineState_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="Tabs">
+            <LayoutGroup Id="Transitions" TextAlignMode="AlignLocal">
+              <LayoutItem Id="Transitions" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+            <LayoutGroup Id="Appearances" TextAlignMode="AlignLocal">
+              <LayoutItem Id="Appearances" TextAlignMode="AutoSize" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutGroup Id="SizeableEditors">
+            <LayoutItem Id="TargetObjectCriteria" ViewItem="TargetObjectCriteria" />
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="KpiDefinition_ListView">
+      <Columns Id="Columns">
+        <ColumnInfo Id="CompareBase" Width="37" />
+      </Columns>
+    </ListView>
+    <DetailView Id="StateMachine_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StateMachine">
+              <LayoutGroup Id="StateMachine_col1">
+                <LayoutItem Id="StartState" ViewItem="StartState" Index="2" />
+              </LayoutGroup>
+              <LayoutGroup Id="StateMachine_col2">
+                <LayoutItem Id="Active" ViewItem="Active" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <DetailView Id="StateMachineTransition_DetailView">
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="StateMachineTransition">
+              <LayoutItem Id="Caption" ViewItem="Caption" />
+              <LayoutItem Id="TargetState" Index="1" ViewItem="TargetState" />
+              <LayoutItem Id="Index" Index="2" ViewItem="Index" />
+              <LayoutItem Id="SaveAndCloseView" Index="3" ViewItem="SaveAndCloseView" />
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>
