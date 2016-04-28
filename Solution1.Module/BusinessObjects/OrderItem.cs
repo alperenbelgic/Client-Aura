@@ -10,26 +10,15 @@ using System.Threading.Tasks;
 namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
-    public class Order : IIntegrationItem, IBusinessObject
+    public class OrderItem
     {
         [Browsable(false)]
         [Key]
         public int Id { get; set; }
 
-        public virtual Customer Customer { get; set; }
+        public virtual Product Product { get; set; }
 
-        public DateTime OrderDate { get; set; }
+        public int Count { get; set; }
 
-        public virtual List<OrderItem> OrderItems { get; set; }
-
-        public string IntegrationSource
-        {
-            get; set;
-        }
-
-        public string IntegrationCode
-        {
-            get; set;
-        }
     }
 }

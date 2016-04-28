@@ -164,6 +164,8 @@
     <Compile Include="BusinessObjects\IBusinessObject.cs" />
     <Compile Include="BusinessObjects\IIntegrationItem.cs" />
     <Compile Include="BusinessObjects\Order.cs" />
+    <Compile Include="BusinessObjects\OrderItem.cs" />
+    <Compile Include="BusinessObjects\Product.cs" />
     <Compile Include="BusinessObjects\Solution1DbContext.cs" />
     <Compile Include="BusinessObjects\User.cs" />
     <Compile Include="DatabaseUpdate\Updater.cs" />

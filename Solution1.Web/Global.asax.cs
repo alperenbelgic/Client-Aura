@@ -26,6 +26,10 @@ namespace Solution1.Web {
         protected void Session_Start(Object sender, EventArgs e) {
             WebApplication.SetInstance(Session, new Solution1AspNetApplication());
             WebApplication.Instance.SwitchToNewStyle();
+
+            WebApplication.Instance.LinkNewObjectToParentImmediately = true;
+            WebApplication.Instance.Title = "Client Aura";
+
             if(ConfigurationManager.ConnectionStrings["ConnectionString"] != null) {
                 WebApplication.Instance.ConnectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
             }

@@ -57,7 +57,9 @@ namespace  Solution1.Module.BusinessObjects {
         public DbSet<TheUser> Users { get; set; }
         public DbSet<Company> Companies { get; set; }
         public DbSet<Order> Orders { get; set; }
-        
+        public DbSet<OrderItem> OrderItems { get; set; }
+        public DbSet<Product> Products { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
