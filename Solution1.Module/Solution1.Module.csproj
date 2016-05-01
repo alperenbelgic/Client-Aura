@@ -168,7 +168,20 @@
     <Compile Include="BusinessObjects\Product.cs" />
     <Compile Include="BusinessObjects\Solution1DbContext.cs" />
     <Compile Include="BusinessObjects\User.cs" />
+    <Compile Include="Controllers\GeneralControllers\CompanyFilterListViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\GeneralControllers\CompanyFilterListViewController.Designer.cs">
+      <DependentUpon>CompanyFilterListViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\OrderController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\OrderController.Designer.cs">
+      <DependentUpon>OrderController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
+    <Compile Include="Helper\Constants.cs" />
     <Compile Include="Module.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -178,6 +191,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Controllers\OrderController.resx">
+      <DependentUpon>OrderController.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml" />
     <EmbeddedResource Include="Module.resx">
       <SubType>Designer</SubType>
@@ -208,6 +224,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="UnusableNodes.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnusableNodes1.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>

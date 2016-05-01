@@ -25,6 +25,8 @@ namespace Solution1.Module.BusinessObjects
 
         public string ProductName { get; set; }
 
+        public virtual Company Company { get; set; }
+
         public string IntegrationCode
         {
             get

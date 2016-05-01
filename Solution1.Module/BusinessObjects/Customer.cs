@@ -24,6 +24,8 @@ namespace Solution1.Module.BusinessObjects
 
         public string TelephoneNumber { get; set; }
 
+        public virtual Company Company { get; set; }
+
         public string IntegrationSource
         {
             get; set;
@@ -33,6 +35,6 @@ namespace Solution1.Module.BusinessObjects
         {
             get; set;
         }
-        
+
     }
 }

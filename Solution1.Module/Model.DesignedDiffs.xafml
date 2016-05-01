@@ -40,6 +40,7 @@
         <ColumnInfo Id="Period" Index="10" Width="48" />
       </Columns>
     </ListView>
+    <ListView Id="Order_OrderItems_ListView" AllowUnlink="False" AllowLink="False" />
     <DetailView Id="ReportDataV2_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
