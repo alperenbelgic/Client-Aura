@@ -25,6 +25,7 @@ namespace Solution1.Module.BusinessObjects
 
         public virtual List<OrderItem> OrderItems { get; set; }
 
+        [Browsable(false)]
         public virtual Company Company { get; set; }
 
         public string IntegrationSource
@@ -51,6 +52,7 @@ namespace Solution1.Module.BusinessObjects
             }
         }
 
+        [Browsable(false)]
         public bool IsDeleted { get; set; }
 
         public int SurveySendingDays { get; set; }
@@ -58,6 +60,7 @@ namespace Solution1.Module.BusinessObjects
 
         private IObjectSpace objectSpace = null;
         [NotMapped]
+        [Browsable(false)]
         public IObjectSpace ObjectSpace
         {
             get

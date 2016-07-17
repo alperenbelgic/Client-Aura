@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
+    [XafDefaultProperty("OptionsContent")]
     public class MultipleChoiceOptionsDefinition : IBusinessObject
     {
         [Browsable(false)]

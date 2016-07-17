@@ -270,6 +270,10 @@
     <Content Include="Tasks\product- detail page.txt" />
     <Content Include="Tasks\user pass.txt" />
     <Content Include="Tasks\validasyonlar.txt" />
+    <None Include="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
     <Content Include="Welcome.html" />
   </ItemGroup>
   <ItemGroup />

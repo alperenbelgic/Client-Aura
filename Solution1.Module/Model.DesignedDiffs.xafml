@@ -77,35 +77,34 @@
         <PropertyEditor Id="OrderStatus" AllowEdit="False" />
       </Items>
       <Layout>
-        <LayoutGroup Id="Main" RelativeSize="100">
-          <LayoutGroup Id="SimpleEditors" RelativeSize="100">
-            <LayoutGroup Id="Order" RelativeSize="100">
-              <LayoutGroup Id="Order_col1" RelativeSize="99.8266897746967">
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Order">
+              <LayoutGroup Id="Order_col1" RelativeSize="100">
                 <LayoutItem Id="OrderStatus" ViewItem="OrderStatus" Index="0" IsNewNode="True" />
-                <LayoutItem Id="Customer" RelativeSize="50" Index="1" />
-                <LayoutItem Id="OrderDate" RelativeSize="50" Index="2" />
-                <LayoutItem Id="Company" Removed="True" />
+                <LayoutItem Id="Customer" Index="1" />
+                <LayoutItem Id="OrderDate" Index="2" />
+                <LayoutItem Id="SurveySendingDays" ViewItem="SurveySendingDays" Index="3" IsNewNode="True" />
                 <LayoutItem Id="IntegrationSource" Removed="True" />
               </LayoutGroup>
-              <LayoutGroup Id="Order_col2" RelativeSize="0.1733102253032929" Caption="Order_col2" Direction="Horizontal" Removed="True">
-                <LayoutItem Id="IntegrationCode" RelativeSize="100" Index="0" Removed="True" />
-                <LayoutItem Id="IsDeleted" Removed="True" />
-                <LayoutItem Id="ObjectSpace" Removed="True" />
+              <LayoutGroup Id="Order_col2">
+                <LayoutItem Id="IntegrationCode" Removed="True" />
                 <LayoutItem Id="OrderStatus" Removed="True" />
+                <LayoutItem Id="SurveySendingDays" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
-          <TabbedGroup Id="Item1" CaptionLocation="Top" Index="1" RelativeSize="100" IsNewNode="True">
-            <LayoutGroup Id="OrderItems_Group" ShowCaption="True" Caption="Products" Index="0" RelativeSize="100" IsNewNode="True">
-              <LayoutItem Id="Products" ViewItem="OrderItems" Index="0" RelativeSize="100" IsNewNode="True" />
+          <TabbedGroup Id="OrderItemsTab" Index="1" IsNewNode="True">
+            <LayoutGroup Id="OrderItemsLayout" Index="0" IsNewNode="True">
+              <LayoutItem Id="OrderItems" ViewItem="OrderItems" Index="0" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="Item2" ShowCaption="True" CaptionLocation="Top" Direction="Vertical" Index="1" RelativeSize="100" Caption="Integration Info" IsNewNode="True">
-              <LayoutItem Id="IntegrationSource" ViewItem="IntegrationSource" Index="0" RelativeSize="10.223642172523961" IsNewNode="True" />
-              <LayoutItem Id="IntegrationCode" ViewItem="IntegrationCode" Index="1" RelativeSize="89.776357827476033" IsNewNode="True" />
+            <LayoutGroup Id="IntegrationInfo" Caption="Integration Info" Index="1" IsNewNode="True">
+              <LayoutItem Id="IntegrationCode" ViewItem="IntegrationCode" Index="0" IsNewNode="True" />
+              <LayoutItem Id="IntegrationSource" ViewItem="IntegrationSource" Index="2" IsNewNode="True" />
             </LayoutGroup>
           </TabbedGroup>
-          <LayoutGroup Id="OrderItems_Group" Direction="Vertical" RelativeSize="66.739606126914666" Removed="True">
-            <LayoutItem Id="OrderItems" RelativeSize="100" />
+          <LayoutGroup Id="OrderItems_Group" Removed="True">
+            <LayoutItem Id="OrderItems" Removed="True" />
           </LayoutGroup>
         </LayoutGroup>
       </Layout>
