@@ -12,17 +12,38 @@
   </ActionDesign>
   <NavigationItems>
     <Items>
-      <Item Id="Default" Visible="True" Caption="Menu">
+      <Item Id="Default" Visible="True" Caption="Menu" Index="0">
         <Items>
           <Item Id="Order_ListView" ImageName="BO_Order" Index="0" Caption="Orders" />
           <Item Id="Customer_ListView" ImageName="BO_Customer" Caption="Customers" Index="1" />
           <Item Id="Product_ListView" Caption="Products" Index="2" />
-          <Item Id="Company_ListView" ImageName="" Index="3" Visible="False" />
+          <Item Id="Company_ListView" ImageName="" Index="3" Visible="False" Removed="True" />
           <Item Id="Event_ListView" Visible="False" />
+          <Item Id="MultipleChoiceOptionsDefinition_ListView" Removed="True" />
           <Item Id="OrderItem_ListView" Visible="False" />
+          <Item Id="Parameter_ListView" Removed="True" />
+          <Item Id="ProductQuestionDefinition_ListView" Removed="True" />
+          <Item Id="QuestionDefinition_ListView" Removed="True" />
+          <Item Id="SurveyDefinition_ListView" Removed="True" />
+          <Item Id="TheUser_ListView" Removed="True" />
         </Items>
       </Item>
-      <Item Id="KPI" Visible="False" />
+      <Item Id="Survey" Index="1" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="SurveyDefinition_ListView" ViewId="SurveyDefinition_ListView" ObjectKey="" Index="0" IsNewNode="True" />
+          <Item Id="ProductQuestionDefinition_ListView" ViewId="ProductQuestionDefinition_ListView" ObjectKey="" Index="1" IsNewNode="True" />
+          <Item Id="MultipleChoiceOptionsDefinition_ListView" ViewId="MultipleChoiceOptionsDefinition_ListView" ObjectKey="" Index="2" IsNewNode="True" />
+          <Item Id="QuestionDefinition_ListView" ViewId="QuestionDefinition_ListView" ObjectKey="" Visible="False" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="System" Index="2" IsNewNode="True">
+        <Items IsNewNode="True">
+          <Item Id="Company_ListView" Index="3" ObjectKey="" ViewId="Company_ListView" Visible="False" ImageName="" Caption="Companies" IsNewNode="True" />
+          <Item Id="Parameter_ListView" ViewId="Parameter_ListView" ObjectKey="" Caption="Parameters" IsNewNode="True" />
+          <Item Id="TheUser_ListView" ViewId="TheUser_ListView" ObjectKey="" Caption="Users" IsNewNode="True" />
+        </Items>
+      </Item>
+      <Item Id="KPI" Visible="False" Index="3" />
       <Item Id="Reports" Visible="False" />
     </Items>
   </NavigationItems>
@@ -89,7 +110,6 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
-    <ListView Id="Order_OrderItems_ListView" AllowUnlink="False" AllowLink="False" />
     <DetailView Id="ReportDataV2_DetailView">
       <Layout>
         <LayoutGroup Id="Main">

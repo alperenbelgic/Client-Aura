@@ -32,5 +32,7 @@ namespace Solution1.Module.BusinessObjects
 
         public bool IsCompanyActive { get; set; }
 
+        public int SurveySendingDays { get; set; }
+
     }
 }

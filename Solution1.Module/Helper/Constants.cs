@@ -17,5 +17,10 @@ namespace Solution1.Module.Helper
 
         public static string SaveButtonDefaultCaption = "Save";
 
+        public static string GetConnectionString()
+        {
+            return System.Configuration.ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString;
+        }
+
     }
 }

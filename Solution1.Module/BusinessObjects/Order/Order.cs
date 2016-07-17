@@ -53,6 +53,9 @@ namespace Solution1.Module.BusinessObjects
 
         public bool IsDeleted { get; set; }
 
+        public int SurveySendingDays { get; set; }
+
+
         private IObjectSpace objectSpace = null;
         [NotMapped]
         public IObjectSpace ObjectSpace
@@ -150,6 +153,16 @@ namespace Solution1.Module.BusinessObjects
             Succeeded,
             ThereIsNoOrderItem,
             NoCustomerSelected
+        }
+
+        public static void SendSurveys(XafApplication application)
+        {
+            var dbContext = SystemHelper.GetDbContext();
+
+            var surveySendingOrders =
+            dbContext.Orders.Where(o =>
+            o.OrderDate.HasValue &&
+            o.OrderDate.Value.AddDays(o.SurveySendingDays) < SystemHelper.GetSystemTime()).ToList();
         }
     }
 

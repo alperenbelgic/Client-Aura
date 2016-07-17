@@ -20,8 +20,8 @@ namespace Solution1.Module.Controllers.GeneralControllers
     public partial class ActionContainerCustomiserController : ViewController
     {
 
-        FillActionContainersController _FillActionContainersController = null;
-        ActionControlsSiteController _ActionControlsSiteController = null;
+        //FillActionContainersController _FillActionContainersController = null;
+        //ActionControlsSiteController _ActionControlsSiteController = null;
 
 
         public ActionContainerCustomiserController()
@@ -41,50 +41,50 @@ namespace Solution1.Module.Controllers.GeneralControllers
             base.OnActivated();
             // Perform various tasks depending on the target View.
 
-            _ActionControlsSiteController = Frame.GetController<ActionControlsSiteController>();
-            _ActionControlsSiteController.CustomizeContainerActions += _FillActionContainersController_CustomizeContainerActions;
+            //_ActionControlsSiteController = Frame.GetController<ActionControlsSiteController>();
+            //_ActionControlsSiteController.CustomizeContainerActions += _FillActionContainersController_CustomizeContainerActions;
 
-            _FillActionContainersController = Frame.GetController<FillActionContainersController>();
-            _FillActionContainersController.CustomizeContainerActions += _FillActionContainersController_CustomizeContainerActions;
+            //_FillActionContainersController = Frame.GetController<FillActionContainersController>();
+            //_FillActionContainersController.CustomizeContainerActions += _FillActionContainersController_CustomizeContainerActions;
 
 
-            Frame.GetController<ModificationsController>().SaveAction.Category = "Unspecified";
+            //Frame.GetController<ModificationsController>().SaveAction.Category = "Unspecified";
         }
 
 
-        private void _FillActionContainersController_CustomizeContainerActions(object sender, CustomizeContainerActionsEventArgs e)
-        {
-            CustomiseRootDetailViewActionsContainer(e);
-        }
+        //private void _FillActionContainersController_CustomizeContainerActions(object sender, CustomizeContainerActionsEventArgs e)
+        //{
+        //    CustomiseRootDetailViewActionsContainer(e);
+        //}
 
-        private void CustomiseRootDetailViewActionsContainer(CustomizeContainerActionsEventArgs e)
-        {
-            //if (this.View is DetailView && 
-            //    (this.View as DetailView).ViewEditMode ==  ViewEditMode.Edit &&
-            //    this.View.IsRoot
-            //    )
-            //{
-            //    var saveAction = Frame.GetController<ModificationsController>().SaveAction;
-            //    var deleteAction = Frame.GetController<DeleteObjectsViewController>().DeleteAction;
-            //    var newAction = Frame.GetController<NewObjectViewController>().NewObjectAction;
+        //private void CustomiseRootDetailViewActionsContainer(CustomizeContainerActionsEventArgs e)
+        //{
+        //    //if (this.View is DetailView && 
+        //    //    (this.View as DetailView).ViewEditMode ==  ViewEditMode.Edit &&
+        //    //    this.View.IsRoot
+        //    //    )
+        //    //{
+        //    //    var saveAction = Frame.GetController<ModificationsController>().SaveAction;
+        //    //    var deleteAction = Frame.GetController<DeleteObjectsViewController>().DeleteAction;
+        //    //    var newAction = Frame.GetController<NewObjectViewController>().NewObjectAction;
 
-            //    if (e.Category != "Unspecified")
-            //    {
-            //        bool saveActionRemoved = e.ContainerActions.Remove(saveAction);
-            //        bool deleteActionRemoved = e.ContainerActions.Remove(deleteAction);
-            //        bool newActionRemoved = e.ContainerActions.Remove(newAction);
-            //    }
-            //    else
-            //    {
-            //        e.ContainerActions.Add(saveAction);
-            //        e.ContainerActions.Add(deleteAction);
-            //        e.ContainerActions.Add(newAction);
-            //    } 
-            //}
+        //    //    if (e.Category != "Unspecified")
+        //    //    {
+        //    //        bool saveActionRemoved = e.ContainerActions.Remove(saveAction);
+        //    //        bool deleteActionRemoved = e.ContainerActions.Remove(deleteAction);
+        //    //        bool newActionRemoved = e.ContainerActions.Remove(newAction);
+        //    //    }
+        //    //    else
+        //    //    {
+        //    //        e.ContainerActions.Add(saveAction);
+        //    //        e.ContainerActions.Add(deleteAction);
+        //    //        e.ContainerActions.Add(newAction);
+        //    //    } 
+        //    //}
 
-            //this.View.Refresh();
+        //    //this.View.Refresh();
             
-        }
+        //}
 
 
         protected override void OnViewControlsCreated()
@@ -94,10 +94,10 @@ namespace Solution1.Module.Controllers.GeneralControllers
         }
         protected override void OnDeactivated()
         {
-            _FillActionContainersController.CustomizeContainerActions -= _FillActionContainersController_CustomizeContainerActions;
-            _ActionControlsSiteController.CustomizeContainerActions -= _FillActionContainersController_CustomizeContainerActions;
+            //_FillActionContainersController.CustomizeContainerActions -= _FillActionContainersController_CustomizeContainerActions;
+            //_ActionControlsSiteController.CustomizeContainerActions -= _FillActionContainersController_CustomizeContainerActions;
 
-            Frame.GetController<ModificationsController>().SaveAction.Category = "Save";
+            //Frame.GetController<ModificationsController>().SaveAction.Category = "Save";
 
 
             // Unsubscribe from previously subscribed events and release other references and resources.

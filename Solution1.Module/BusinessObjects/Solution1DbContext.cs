@@ -15,35 +15,39 @@ using DevExpress.ExpressApp.Workflow.Versioning;
 using DevExpress.Workflow.EF;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
-namespace  Solution1.Module.BusinessObjects {
-	public class Solution1DbContext : DbContext {
-		public Solution1DbContext(String connectionString)
-			: base(connectionString) {
-		}
-		public Solution1DbContext(DbConnection connection)
-			: base(connection, false) {
-		}
-		public DbSet<ModuleInfo> ModulesInfo { get; set; }
-		public DbSet<Role> Roles { get; set; }
-		public DbSet<TypePermissionObject> TypePermissionObjects { get; set; }
+namespace Solution1.Module.BusinessObjects
+{
+    public class Solution1DbContext : DbContext
+    {
+        public Solution1DbContext(String connectionString)
+            : base(connectionString)
+        {
+        }
+        public Solution1DbContext(DbConnection connection)
+            : base(connection, false)
+        {
+        }
+        public DbSet<ModuleInfo> ModulesInfo { get; set; }
+        public DbSet<Role> Roles { get; set; }
+        public DbSet<TypePermissionObject> TypePermissionObjects { get; set; }
 
-		public DbSet<Event> Events { get; set; }
-		public DbSet<Resource> Resources { get; set; }
-		public DbSet<FileData> FileData { get; set; }
-		public DbSet<Analysis> Analysis { get; set; }
-		public DbSet<HCategory> HCategories { get; set; }
+        public DbSet<Event> Events { get; set; }
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<FileData> FileData { get; set; }
+        public DbSet<Analysis> Analysis { get; set; }
+        public DbSet<HCategory> HCategories { get; set; }
         public DbSet<KpiDefinition> KpiDefinition { get; set; }
         public DbSet<KpiInstance> KpiInstance { get; set; }
         public DbSet<KpiHistoryItem> KpiHistoryItem { get; set; }
         public DbSet<KpiScorecard> KpiScorecard { get; set; }
-		public DbSet<StateMachine> StateMachines { get; set; }
-		public DbSet<StateMachineState> StateMachineStates { get; set; }
-		public DbSet<StateMachineTransition> StateMachineTransitions { get; set; }
-		public DbSet<StateMachineAppearance> StateMachineAppearances { get; set; }
-		public DbSet<ReportDataV2> ReportDataV2 { get; set; }
-		public DbSet<ModelDifference> ModelDifferences { get; set; }
-		public DbSet<ModelDifferenceAspect> ModelDifferenceAspects { get; set; }
-		public DbSet<EFWorkflowDefinition> EFWorkflowDefinition { get; set; }
+        public DbSet<StateMachine> StateMachines { get; set; }
+        public DbSet<StateMachineState> StateMachineStates { get; set; }
+        public DbSet<StateMachineTransition> StateMachineTransitions { get; set; }
+        public DbSet<StateMachineAppearance> StateMachineAppearances { get; set; }
+        public DbSet<ReportDataV2> ReportDataV2 { get; set; }
+        public DbSet<ModelDifference> ModelDifferences { get; set; }
+        public DbSet<ModelDifferenceAspect> ModelDifferenceAspects { get; set; }
+        public DbSet<EFWorkflowDefinition> EFWorkflowDefinition { get; set; }
         public DbSet<EFStartWorkflowRequest> EFStartWorkflowRequest { get; set; }
         public DbSet<EFRunningWorkflowInstanceInfo> EFRunningWorkflowInstanceInfo { get; set; }
         public DbSet<EFWorkflowInstanceControlCommandRequest> EFWorkflowInstanceControlCommandRequest { get; set; }
@@ -60,6 +64,10 @@ namespace  Solution1.Module.BusinessObjects {
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Product> Products { get; set; }
 
+        public DbSet<MultipleChoiceOptionsDefinition> MultipleChoiceOptionsDefinitions { get; set; }
+        public DbSet<QuestionDefinition> QuestionDefinitions { get; set; }
+        public DbSet<ProductQuestionDefinition> ProductQuestionDefinitions { get; set; }
+        public DbSet<SurveyDefinition> SurveyDefinitions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
