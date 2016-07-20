@@ -25,6 +25,8 @@ namespace Solution1.Module.BusinessObjects
 
         public bool AddProductQuestions { get; set; }
 
+        public int SurveySendingDays { get; set; }
+
         [Browsable(false)]
         public virtual Company Company { get; set; }
 

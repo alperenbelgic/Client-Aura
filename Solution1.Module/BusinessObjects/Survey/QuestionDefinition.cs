@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace Solution1.Module.BusinessObjects
 {
-    [DefaultClassOptions]
+    
     public class QuestionDefinition : IBusinessObject
     {
         [Browsable(false)]

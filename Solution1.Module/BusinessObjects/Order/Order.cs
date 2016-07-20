@@ -1,4 +1,5 @@
 ﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
@@ -13,6 +14,7 @@ using System.Threading.Tasks;
 
 namespace Solution1.Module.BusinessObjects
 {
+    [XafDefaultProperty("OrderStatusUserFriendly")]
     [DefaultClassOptions]
     public class Order : IIntegrationItem, IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
     {
@@ -40,6 +42,7 @@ namespace Solution1.Module.BusinessObjects
         }
 
         private string orderStatus = OrderStates.Draft_NotSaved;
+        [Browsable(false)]
         public string OrderStatus
         {
             get
@@ -56,7 +59,7 @@ namespace Solution1.Module.BusinessObjects
         [Browsable(false)]
         public bool IsDeleted { get; set; }
 
-        public int SurveySendingDays { get; set; }
+        public virtual OrderSurvey OrderSurvey { get; set; }
 
 
         private IObjectSpace objectSpace = null;
@@ -75,6 +78,16 @@ namespace Solution1.Module.BusinessObjects
             }
         }
 
+        [NotMapped]
+        [NonPersistentDc]
+        public string OrderStatusUserFriendly
+        {
+            get
+            {
+                return OrderStatesUserFriendlyContent.Values[this.OrderStatus];
+            }
+        }
+
         public void OnCreated()
         {
             this.OrderStatus = OrderStates.Draft;
@@ -82,6 +95,19 @@ namespace Solution1.Module.BusinessObjects
             if (this.OrderItems == null)
             {
                 this.OrderItems = new List<OrderItem>();
+            }
+
+            if (this.OrderSurvey == null)
+            {
+                this.OrderSurvey = this.ObjectSpace.CreateObject<OrderSurvey>();
+
+                var defaultSurveyDefinition = UserHelper.GetUsersCompaniesDefaultSurvey(this.ObjectSpace);
+
+                if (defaultSurveyDefinition != null)
+                {
+                    this.OrderSurvey.Survey = defaultSurveyDefinition;
+                    this.OrderSurvey.SurveySendingDays = defaultSurveyDefinition.SurveySendingDays;
+                }
             }
         }
 
@@ -166,12 +192,12 @@ namespace Solution1.Module.BusinessObjects
 
         public static void SendSurveys(XafApplication application)
         {
-            var dbContext = SystemHelper.GetDbContext();
+            //var dbContext = SystemHelper.GetDbContext();
 
-            var surveySendingOrders =
-            dbContext.Orders.Where(o =>
-            o.OrderDate.HasValue &&
-            o.OrderDate.Value.AddDays(o.SurveySendingDays) < SystemHelper.GetSystemTime()).ToList();
+            //var surveySendingOrders =
+            //dbContext.Orders.Where(o =>
+            //o.OrderDate.HasValue &&
+            //o.OrderDate.Value.AddDays(o.SurveySendingDays) < SystemHelper.GetSystemTime()).ToList();
         }
     }
 
@@ -183,6 +209,20 @@ namespace Solution1.Module.BusinessObjects
         public static string FeedBackWaiting = "FeedBackWaiting";
         public static string FeedbackReached = "FeedbackReached";
     }
+
+    public static class OrderStatesUserFriendlyContent
+    {
+        public static Dictionary<string, string> Values = new Dictionary<string, string>()
+        {
+            { OrderStates.Draft_NotSaved, "Draft" },
+            { OrderStates.Draft, "Draft" },
+            { OrderStates.SurveySendingWaiting, "Waiting Survey Sending Time" },
+            { OrderStates.FeedBackWaiting, "Survey Sent, Feedback Waiting" },
+            { OrderStates.FeedbackReached, "Feedback Reached" }
+        };
+    }
+
+
 
     public static class OrderEvents
     {

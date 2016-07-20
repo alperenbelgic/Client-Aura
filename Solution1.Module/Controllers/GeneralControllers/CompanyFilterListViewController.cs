@@ -22,16 +22,28 @@ namespace Solution1.Module.Controllers.GeneralControllers
     public partial class CompanyFilterListViewController : ObjectViewController<ListView, IBusinessObject>
     {
         private string CompanyMemberName = "Company";
+        private string IsDeletedMemberName = "IsDeleted";
+
         public CompanyFilterListViewController()
         {
             InitializeComponent();
             // Target required Views (via the TargetXXX properties) and create their Actions.
-            
+
         }
+
         protected override void OnActivated()
         {
             base.OnActivated();
             // Perform various tasks depending on the target View.
+
+            FilterForCompany();
+
+            // warning: this call and Controller's name is incompitable.
+            FilterForIsDeletedProperty();
+        }
+
+        private void FilterForCompany()
+        {
             var user = (SecuritySystem.CurrentUser as TheUser);
             if (!user.Roles.Any(r => r.Name == RoleNames.Administrators))
             {
@@ -43,6 +55,17 @@ namespace Solution1.Module.Controllers.GeneralControllers
                 }
             }
         }
+
+        private void FilterForIsDeletedProperty()
+        {
+            var hasIsDeletedMember = this.View.ObjectTypeInfo.Members.Any(m => m.Name == IsDeletedMemberName);
+
+            if (hasIsDeletedMember)
+            {
+                View.CollectionSource.Criteria["IsDeletedCriteria"] = new BinaryOperator("IsDeleted", false);
+            }
+        }
+
         protected override void OnViewControlsCreated()
         {
             base.OnViewControlsCreated();

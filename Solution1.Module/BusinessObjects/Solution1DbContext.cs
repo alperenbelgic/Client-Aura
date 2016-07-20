@@ -15,6 +15,7 @@ using DevExpress.ExpressApp.Workflow.Versioning;
 using DevExpress.Workflow.EF;
 using System.Data.Entity.ModelConfiguration.Conventions;
 
+
 namespace Solution1.Module.BusinessObjects
 {
     public class Solution1DbContext : DbContext
@@ -68,6 +69,8 @@ namespace Solution1.Module.BusinessObjects
         public DbSet<QuestionDefinition> QuestionDefinitions { get; set; }
         public DbSet<ProductQuestionDefinition> ProductQuestionDefinitions { get; set; }
         public DbSet<SurveyDefinition> SurveyDefinitions { get; set; }
+        public DbSet<OrderSurvey> OrderSurveys { get; set; }
+
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

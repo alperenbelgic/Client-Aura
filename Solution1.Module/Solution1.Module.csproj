@@ -170,6 +170,7 @@
     <Compile Include="BusinessObjects\Order\OrderItem.cs" />
     <Compile Include="BusinessObjects\General\Parameter.cs" />
     <Compile Include="BusinessObjects\Order\Product.cs" />
+    <Compile Include="BusinessObjects\Survey\OrderSurvey.cs" />
     <Compile Include="BusinessObjects\Survey\QuestionDefinition.cs" />
     <Compile Include="BusinessObjects\Solution1DbContext.cs" />
     <Compile Include="BusinessObjects\Survey\SurveyDefinition.cs" />
@@ -278,6 +279,22 @@
     <Content Include="Tasks\user pass.txt" />
     <Content Include="Tasks\validasyonlar.txt" />
     <None Include="UnusableNodes2.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnusableNodes3.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnusableNodes4.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnusableNodes5.xml">
+      <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="UnusableNodes6.xml">
       <DependentUpon>Model.DesignedDiffs.xafml</DependentUpon>
       <SubType>Designer</SubType>
     </None>

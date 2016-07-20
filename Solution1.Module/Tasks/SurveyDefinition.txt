@@ -4,3 +4,6 @@
 - survey kac gun sonra gonderilecek alani eklensin
 
 TAMAMLANANLAR
+
+VALIDASYON
+- bir company icin en az bir validasyon olmali

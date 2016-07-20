@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.EF;
 using Solution1.Module.BusinessObjects;
 using System;
@@ -37,6 +38,26 @@ namespace Solution1.Module.Helper
             {
                 return null;
             }
+        }
+
+        public static SurveyDefinition GetUsersCompaniesDefaultSurvey(IObjectSpace objectSpace)
+        {
+            var usersCompany = GetUsersCompany(objectSpace);
+            var surveyDefinition = objectSpace.FindObject<SurveyDefinition>(
+                CriteriaOperator.And(
+                    new BinaryOperator("Company.Id", usersCompany.Id),
+                    new BinaryOperator("IsDefault", true)
+                    ));
+
+            if (surveyDefinition == null)
+            {
+                surveyDefinition = objectSpace.FindObject<SurveyDefinition>(
+                CriteriaOperator.And(
+                    new BinaryOperator("Company.Id", usersCompany.Id)
+                    ));
+            }
+
+            return surveyDefinition;
         }
 
     }

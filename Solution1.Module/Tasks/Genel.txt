@@ -4,3 +4,5 @@
 
 TAMAMLANANLAR
 - Parametreleri normal yetkilerdeki kullanicilar sadece gorebilsin, editleyemesin
+- IsDeleted alani olan modeller listelenirken bu alan false olanlar listelensin
+- IHaveIsDeleted interface inin implement eden modellerin silme islemlerinde bu alan set edilerek ilerlensin ve silme davranisi olussun

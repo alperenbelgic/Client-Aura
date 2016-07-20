@@ -35,7 +35,6 @@
           <Item Id="OrderItem_ListView" Visible="False" />
           <Item Id="Parameter_ListView" Removed="True" />
           <Item Id="ProductQuestionDefinition_ListView" Removed="True" />
-          <Item Id="QuestionDefinition_ListView" Removed="True" />
           <Item Id="SurveyDefinition_ListView" Removed="True" />
           <Item Id="TheUser_ListView" Removed="True" />
         </Items>
@@ -84,7 +83,8 @@
     </ListView>
     <DetailView Id="Order_DetailView">
       <Items>
-        <PropertyEditor Id="OrderStatus" AllowEdit="False" />
+        <PropertyEditor Id="OrderSurvey.Survey" Caption="Survey" PropertyName="OrderSurvey.Survey" IsNewNode="True" />
+        <PropertyEditor Id="OrderSurvey.SurveySendingDays" PropertyName="OrderSurvey.SurveySendingDays" IsNewNode="True" />
       </Items>
       <Layout>
         <LayoutGroup Id="Main">
@@ -94,21 +94,24 @@
                 <LayoutItem Id="OrderStatus" ViewItem="OrderStatus" Index="0" IsNewNode="True" />
                 <LayoutItem Id="Customer" Index="1" />
                 <LayoutItem Id="OrderDate" Index="2" />
-                <LayoutItem Id="SurveySendingDays" ViewItem="SurveySendingDays" Index="3" IsNewNode="True" />
                 <LayoutItem Id="IntegrationSource" Removed="True" />
               </LayoutGroup>
               <LayoutGroup Id="Order_col2">
                 <LayoutItem Id="IntegrationCode" Removed="True" />
-                <LayoutItem Id="OrderStatus" Removed="True" />
-                <LayoutItem Id="SurveySendingDays" Removed="True" />
+                <LayoutItem Id="OrderStatusUserFriendly" Removed="True" />
+                <LayoutItem Id="OrderSurvey" Removed="True" />
               </LayoutGroup>
             </LayoutGroup>
           </LayoutGroup>
           <TabbedGroup Id="OrderItemsTab" Index="1" IsNewNode="True">
-            <LayoutGroup Id="OrderItemsLayout" Index="0" IsNewNode="True">
+            <LayoutGroup Id="OrderItemsLayout" Index="0" Caption="Products" IsNewNode="True">
               <LayoutItem Id="OrderItems" ViewItem="OrderItems" Index="0" IsNewNode="True" />
             </LayoutGroup>
-            <LayoutGroup Id="IntegrationInfo" Caption="Integration Info" Index="1" IsNewNode="True">
+            <LayoutGroup Id="Survey" Index="1" IsNewNode="True">
+              <LayoutItem Id="OrderSurvey.Survey" ViewItem="OrderSurvey.Survey" Index="0" IsNewNode="True" />
+              <LayoutItem Id="OrderSurvey.SurveySendingDays" Index="1" ViewItem="OrderSurvey.SurveySendingDays" IsNewNode="True" />
+            </LayoutGroup>
+            <LayoutGroup Id="IntegrationInfo" Caption="Integration Info" Index="2" IsNewNode="True">
               <LayoutItem Id="IntegrationCode" ViewItem="IntegrationCode" Index="0" IsNewNode="True" />
               <LayoutItem Id="IntegrationSource" ViewItem="IntegrationSource" Index="2" IsNewNode="True" />
             </LayoutGroup>

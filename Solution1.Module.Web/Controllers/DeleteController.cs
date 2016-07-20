@@ -15,14 +15,13 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using Solution1.Module.BusinessObjects.General;
 using DevExpress.ExpressApp.Web.SystemModule;
+using Solution1.Module.Helper;
 
 namespace Solution1.Module.Web.Controllers
 {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppViewControllertopic.aspx.
     public partial class DeleteController : WebDeleteObjectsViewController
     {
-        private readonly string IsDeletedMemberName = "IsDeleted";
-
         public DeleteController()
         {
             InitializeComponent();
@@ -46,15 +45,49 @@ namespace Solution1.Module.Web.Controllers
 
         protected override void Delete(SimpleActionExecuteEventArgs args)
         {
-            if (this.View.CurrentObject is IHaveIsDeletedMember)
+
+            if (this.View is DetailView)
             {
-                (this.View.CurrentObject as IHaveIsDeletedMember).IsDeleted = true;
-                this.View.ObjectSpace.CommitChanges();
+                if (this.View.CurrentObject is IHaveIsDeletedMember)
+                {
+                    SetIsDeletedTrue(this.View.CurrentObject);
+                    this.ObjectSpace.CommitChanges();
+                    this.View.Close();
+                }
+                else
+                {
+                    base.Delete(args);
+                }
+            }
+            else if (this.View is ListView)
+            {
+                if (
+                    (this.View as ListView).SelectedObjects.Count > 0 &&
+                    (this.View as ListView).SelectedObjects[0] is IHaveIsDeletedMember
+                  )
+                {
+                    foreach (var item in (this.View as ListView).SelectedObjects)
+                    {
+                        SetIsDeletedTrue(item);
+                    }
+                    this.ObjectSpace.CommitChanges();
+                    this.View.Refresh();
+                    ApplicationHelper.ShowInfoPopup(this.Application, "Objects have been archieved.");
+                }
+                else
+                {
+                    base.Delete(args);
+                }
             }
             else
             {
                 base.Delete(args);
             }
+        }
+
+        private void SetIsDeletedTrue(object obj)
+        {
+            (obj as IHaveIsDeletedMember).IsDeleted = true;
         }
     }
 }

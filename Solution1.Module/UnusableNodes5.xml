@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Application>
+  <Views Id="Views">
+    <DetailView Id="Order_DetailView">
+      <Items Id="Items">
+        <PropertyEditor Id="OrderSurvey.Survey" PropertyName="Survey.Survey" />
+      </Items>
+      <Layout Id="Layout">
+        <LayoutGroup Id="Main">
+          <TabbedGroup Id="OrderItemsTab">
+            <LayoutGroup Id="Survey">
+              <LayoutItem Id="OrderSurvey.Survey" ViewItem="OrderSurvey.Survey" />
+              <LayoutItem Id="Survey" ViewItem="Survey" />
+            </LayoutGroup>
+          </TabbedGroup>
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Order">
+              <LayoutGroup Id="Order_col1">
+                <LayoutItem Id="SurveySendingDays" ViewItem="SurveySendingDays" />
+              </LayoutGroup>
+              <LayoutGroup Id="Order_col2">
+                <LayoutItem Id="Survey" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+  </Views>
+</Application>

@@ -1,15 +1,9 @@
 YAPILACAKLAR
 - start feedback process tiklandiktan sonra, popup'ta ozet bilgiler gelsin, su kadar gun sonra su isimli tanimi olan survey gonderilecektir diye, bu ayarlari survey tabindan degistirebilirsiniz desin
-- alta survey tab ekle
-	- survey definition olsun default secimli gelsin, kac gun sonra gonderilecegi ayrica secilsin
-- akisin tamamlanmasi
-	+ silinmesin, is deleted 1 olsun
-	+ geri al action i
-	+ action gorunurlukleri	
-- order status metni user friendly, belki view tepesine yazilabilir ilgili yerden kaldirilip
-- tab daki order item ler ve diger kisimlardakiler products olarak degistirilebilir
 - vakti gelen survey'lerin gonderilmesi batch isi
 - response'larin beslenmesi servisi
+- musterinin mail adresi kesinlikle kontrol edilmeli
+- order status user friendly, field olarak da eklensin yine de, tamami cikmiyor cunku
 
 TAMAMLANANLAR
 - order item length 0 kontrolu
@@ -25,6 +19,16 @@ TAMAMLANANLAR
 - object space, is deleted property leri gorunmesin ( attribute ile )
 - genel: state machine menusunu kaldir
 - order status ui controlu kaymis, duzelsin 
+- tab daki order item ler ve diger kisimlardakiler products olarak degistirilebilir
+- alta survey tab ekle
+	- survey definition olsun default secimli gelsin, kac gun sonra gonderilecegi ayrica secilsin
++ akisin tamamlanmasi
+	+ silinmesin, is deleted 1 olsun
+	+ geri al action i
+	+ action gorunurlukleri	
+- order status metni user friendly, belki view tepesine yazilabilir ilgili yerden kaldirilip
+
+
 
 DROP/ERTELENDI
 - ikon ekle, save ve new icin
