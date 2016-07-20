@@ -143,6 +143,17 @@ namespace Solution1.Module.BusinessObjects
                         {
                             exceptionalCases.Add(OrderProcessingResultTypes.NoCustomerSelected);
                         }
+                        else
+                        {
+                            if (string.IsNullOrWhiteSpace(this.Customer.Email))
+                            {
+                                exceptionalCases.Add(OrderProcessingResultTypes.CustomerHasNoEmailAddress);
+                            }
+                        }
+                        if (this.OrderSurvey.Survey == null)
+                        {
+                            exceptionalCases.Add(OrderProcessingResultTypes.NoSurveySelected);
+                        }
 
                         if (exceptionalCases.Count > 0)
                         {
@@ -187,17 +198,25 @@ namespace Solution1.Module.BusinessObjects
         {
             Succeeded,
             ThereIsNoOrderItem,
-            NoCustomerSelected
+            NoCustomerSelected,
+            NoSurveySelected,
+            CustomerHasNoEmailAddress
         }
 
-        public static void SendSurveys(XafApplication application)
+        public static List<Order> GetSurveySendingOrders()
         {
-            //var dbContext = SystemHelper.GetDbContext();
+            var dbContext = SystemHelper.GetDbContext();
 
-            //var surveySendingOrders =
-            //dbContext.Orders.Where(o =>
-            //o.OrderDate.HasValue &&
-            //o.OrderDate.Value.AddDays(o.SurveySendingDays) < SystemHelper.GetSystemTime()).ToList();
+            var surveySendingOrders =
+            dbContext.Orders.Where(
+                order =>
+            !order.IsDeleted &&
+            order.OrderStatus == OrderStates.SurveySendingWaiting &&
+            order.OrderDate.HasValue &&
+            order.OrderDate.Value.AddDays(order.OrderSurvey.SurveySendingDays) > SystemHelper.GetSystemTime())
+            .ToList();
+
+            return surveySendingOrders;
         }
     }
 

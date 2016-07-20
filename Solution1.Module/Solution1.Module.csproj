@@ -208,6 +208,7 @@
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Helper\ApplicationHelper.cs" />
     <Compile Include="Helper\Constants.cs" />
+    <Compile Include="Helper\Dictionary.cs" />
     <Compile Include="Helper\Result.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\UserHelper.cs" />

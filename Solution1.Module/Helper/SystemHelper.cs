@@ -11,10 +11,6 @@ namespace Solution1.Module.Helper
     {
         public static DateTime GetSystemTime()
         {
-#if DEBUG
-            return new DateTime(2016, 7, 16);
-#endif
-
             return DateTime.Now;
         }
 

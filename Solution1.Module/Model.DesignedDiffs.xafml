@@ -83,6 +83,7 @@
     </ListView>
     <DetailView Id="Order_DetailView">
       <Items>
+        <PropertyEditor Id="OrderStatusUserFriendly" Caption="Order Status" />
         <PropertyEditor Id="OrderSurvey.Survey" Caption="Survey" PropertyName="OrderSurvey.Survey" ImmediatePostData="True" IsNewNode="True" />
         <PropertyEditor Id="OrderSurvey.SurveySendingDays" PropertyName="OrderSurvey.SurveySendingDays" IsNewNode="True" />
       </Items>
@@ -91,7 +92,7 @@
           <LayoutGroup Id="SimpleEditors">
             <LayoutGroup Id="Order">
               <LayoutGroup Id="Order_col1" RelativeSize="100">
-                <LayoutItem Id="OrderStatus" ViewItem="OrderStatus" Index="0" IsNewNode="True" />
+                <LayoutItem Id="OrderStatus" Index="0" ViewItem="OrderStatusUserFriendly" IsNewNode="True" />
                 <LayoutItem Id="Customer" Index="1" />
                 <LayoutItem Id="OrderDate" Index="2" />
                 <LayoutItem Id="IntegrationSource" Removed="True" />

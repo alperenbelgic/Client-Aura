@@ -1,10 +1,7 @@
 YAPILACAKLAR
-- start feedback process tiklandiktan sonra, popup'ta ozet bilgiler gelsin, su kadar gun sonra su isimli tanimi olan survey gonderilecektir diye, bu ayarlari survey tabindan degistirebilirsiniz desin
 - vakti gelen survey'lerin gonderilmesi batch isi
 - response'larin beslenmesi servisi
-- musterinin mail adresi kesinlikle kontrol edilmeli
 - order status user friendly, field olarak da eklensin yine de, tamami cikmiyor cunku
-- survey alani N/A secilemesin
 
 TAMAMLANANLAR
 - order item length 0 kontrolu
@@ -29,6 +26,10 @@ TAMAMLANANLAR
 	+ action gorunurlukleri	
 - order status metni user friendly, belki view tepesine yazilabilir ilgili yerden kaldirilip
 - survey degisirse, sending days alani da guncellensin
+- survey alani N/A secilemesin
+- musterinin mail adresi kesinlikle kontrol edilmeli
+- start feedback process tiklandiktan sonra, popup'ta ozet bilgiler gelsin, su kadar gun sonra su isimli tanimi olan survey gonderilecektir diye, bu ayarlari survey tabindan degistirebilirsiniz desin. 
+
 
 
 

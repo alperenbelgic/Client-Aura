@@ -52,7 +52,7 @@ namespace Solution1.Module.Controllers
             _NewObjectViewController.ObjectCreated += _NewObjectViewController_ObjectCreated;
 
             this.ObjectSpace.ObjectChanged += ObjectSpace_ObjectChanged;
-            
+
 
             ArrangeUI();
         }
@@ -68,9 +68,9 @@ namespace Solution1.Module.Controllers
 
         private void OrderSurvey_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == "Survey")
+            if (e.PropertyName == "Survey" && this.CurrentOrderObject.OrderSurvey.Survey != null)
             {
-                this.CurrentOrderObject.OrderSurvey.SurveySendingDays = 
+                this.CurrentOrderObject.OrderSurvey.SurveySendingDays =
                 this.CurrentOrderObject.OrderSurvey.Survey.SurveySendingDays;
 
                 this.CurrentOrderObject.OrderSurvey.PropertyChanged -= OrderSurvey_PropertyChanged;
@@ -166,7 +166,6 @@ namespace Solution1.Module.Controllers
 
         private void StartFeedbackProcessAction_Execute(object sender, SimpleActionExecuteEventArgs e)
         {
-
             var order = this.View.CurrentObject as Order;
 
             if (order != null)
@@ -177,6 +176,7 @@ namespace Solution1.Module.Controllers
                 {
                     order.ObjectSpace.CommitChanges();
                     this.View.Refresh();
+                    ApplicationHelper.ShowInfoPopup(this.Application, GetFeedbackProcessStartedMessage());
                 }
                 else
                 {
@@ -184,12 +184,18 @@ namespace Solution1.Module.Controllers
                     if (result.Reasons.Contains(Order.OrderProcessingResultTypes.ThereIsNoOrderItem))
                     {
                         informationMessage.Messages.Add("You should add at least one product.");
-
                     }
                     if (result.Reasons.Contains(Order.OrderProcessingResultTypes.NoCustomerSelected))
-
                     {
                         informationMessage.Messages.Add("You should choose a customer.");
+                    }
+                    if (result.Reasons.Contains(Order.OrderProcessingResultTypes.CustomerHasNoEmailAddress))
+                    {
+                        informationMessage.Messages.Add("Customer should have an email address.");
+                    }
+                    if (result.Reasons.Contains(Order.OrderProcessingResultTypes.NoSurveySelected))
+                    {
+                        informationMessage.Messages.Add("A survey should be selected on Order page's detail tab.");
                     }
 
                     this.Application.ShowInformationBox(informationMessage);
@@ -197,6 +203,17 @@ namespace Solution1.Module.Controllers
             }
 
             ArrangeUI();
+        }
+
+        private string GetFeedbackProcessStartedMessage()
+        {
+            var messageContent = Dictionary.GetValue("Order_SurveyProcessStartedMessage");
+            messageContent =
+            messageContent
+            .Replace("[CustomerName]", this.CurrentOrderObject.Customer.CustomerName)
+            .Replace("[SurveySendingDays]", this.CurrentOrderObject.OrderSurvey.SurveySendingDays.ToString())
+            .Replace("[SurveyName]", this.CurrentOrderObject.OrderSurvey.Survey.SurveyName);
+            return messageContent;
         }
 
         private void ArrangeActionVisibilitiies()
