@@ -4,6 +4,8 @@ YAPILACAKLAR
 - response'larin beslenmesi servisi
 - musterinin mail adresi kesinlikle kontrol edilmeli
 - order status user friendly, field olarak da eklensin yine de, tamami cikmiyor cunku
+- survey alani N/A secilemesin
+- survey degisirse, sending days alani da guncellensin
 
 TAMAMLANANLAR
 - order item length 0 kontrolu

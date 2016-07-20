@@ -335,10 +335,13 @@
   <ItemGroup>
     <Content Include="Model.Desktop.xafml" />
     <Content Include="Model.Tablet.xafml" />
+    <None Include="Properties\PublishProfiles\test1.pubxml" />
     <None Include="ReadMe.txt" />
     <Content Include="UIControls\Templates\DefaultVerticalTemplateContentNew.ascx" />
     <Content Include="UIControls\UserControls\InformationBox.ascx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
