@@ -276,6 +276,8 @@
     <Content Include="Tasks\order- detail page.txt" />
     <Content Include="Tasks\product- detail page.txt" />
     <Content Include="Tasks\Question Definition.txt" />
+    <Content Include="Tasks\Reports.txt" />
+    <Content Include="Tasks\Services.txt" />
     <Content Include="Tasks\SurveyDefinition.txt" />
     <Content Include="Tasks\user pass.txt" />
     <Content Include="Tasks\validasyonlar.txt" />

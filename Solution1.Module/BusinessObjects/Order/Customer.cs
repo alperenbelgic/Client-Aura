@@ -1,5 +1,6 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Validation;
 using Solution1.Module.Helper;
 using System;
 using System.Collections.Generic;
@@ -19,8 +20,12 @@ namespace Solution1.Module.BusinessObjects
         [Key]
         public int Id { get; set; }
 
+        [RuleRequiredField(CustomMessageTemplate = "Customer Name should not be empty.", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string CustomerName { get; set; }
 
+        private const string _EmailRegularExpression = "^[a-z0-9_\\+-]+(\\.[a-z0-9_\\+-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*\\.([a-z]{2,4})$";
+
+        [RuleRegularExpression(DefaultContexts.Save, Customer._EmailRegularExpression, CustomMessageTemplate = "Invalid email format!", SkipNullOrEmptyValues =false)]
         public string Email { get; set; }
 
         public string Address { get; set; }

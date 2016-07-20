@@ -1,0 +1,5 @@
+﻿- vakti gelen survey'lerin gonderilmesi batch isi
+	+ get orders that are ready
+	- create mail content for the survey
+	- create survey instance content
+- create answers on the survey instance when survey answered

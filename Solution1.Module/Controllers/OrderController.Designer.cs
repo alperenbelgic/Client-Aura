@@ -48,7 +48,9 @@
             this.StopProcessAndEdit.Caption = "Stop Process and Edit";
             this.StopProcessAndEdit.ConfirmationMessage = null;
             this.StopProcessAndEdit.Id = "StopProcessAndEdit";
+            this.StopProcessAndEdit.TargetViewType = DevExpress.ExpressApp.ViewType.DetailView;
             this.StopProcessAndEdit.ToolTip = null;
+            this.StopProcessAndEdit.TypeOfView = typeof(DevExpress.ExpressApp.DetailView);
             this.StopProcessAndEdit.Execute += new DevExpress.ExpressApp.Actions.SimpleActionExecuteEventHandler(this.StopProcessAndEdit_Execute);
             // 
             // OrderController

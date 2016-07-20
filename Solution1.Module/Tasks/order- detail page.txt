@@ -1,7 +1,4 @@
 YAPILACAKLAR
-- vakti gelen survey'lerin gonderilmesi batch isi
-- response'larin beslenmesi servisi
-- order status user friendly, field olarak da eklensin yine de, tamami cikmiyor cunku
 
 TAMAMLANANLAR
 - order item length 0 kontrolu
@@ -29,7 +26,7 @@ TAMAMLANANLAR
 - survey alani N/A secilemesin
 - musterinin mail adresi kesinlikle kontrol edilmeli
 - start feedback process tiklandiktan sonra, popup'ta ozet bilgiler gelsin, su kadar gun sonra su isimli tanimi olan survey gonderilecektir diye, bu ayarlari survey tabindan degistirebilirsiniz desin. 
-
+- order status user friendly, field olarak da eklensin yine de, tamami cikmiyor cunku
 
 
 

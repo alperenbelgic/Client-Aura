@@ -1,2 +1,5 @@
 YAPILACAKLAR
-count 0 kontrolu
+
+TAMAMLANDI
+- count 0 kontrolu
+- product null check

@@ -11,6 +11,11 @@
     </ActionToContainerMapping>
   </ActionDesign>
   <BOModel>
+    <Class Name="Solution1.Module.BusinessObjects.Order">
+      <OwnMembers>
+        <Member Name="OrderStatusUserFriendly" Caption="Order Status" />
+      </OwnMembers>
+    </Class>
     <Class Name="Solution1.Module.BusinessObjects.ProductQuestionDefinition">
       <OwnMembers>
         <Member Name="AnswerType" DataSourceCriteria="[ParameterGroupKey] = 'AnswerType'" />
@@ -63,7 +68,35 @@
     <SchemaModule Name="SchedulerModuleBase" Version="15.2.7.0" IsNewNode="True" />
     <SchemaModule Name="SystemModule" Version="15.2.7.0" IsNewNode="True" />
   </SchemaModules>
+  <Validation>
+    <Rules>
+      <RuleCriteria Id="OrderItem Product null and count check" TargetContextIDs="Save" TargetType="Solution1.Module.BusinessObjects.OrderItem" Criteria="[Count] &gt; 0 And [Product] Is Not Null" CustomMessageTemplate="Product should be selected  and count should be greater than 0." SkipNullOrEmptyValues="False" IsNewNode="True" />
+    </Rules>
+  </Validation>
   <Views>
+    <DetailView Id="Customer_DetailView">
+      <Items>
+        <PropertyEditor Id="IntegrationCode" Removed="True" />
+        <PropertyEditor Id="IntegrationSource" Removed="True" />
+      </Items>
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="Customer">
+              <LayoutGroup Id="Customer_col1" RelativeSize="100">
+                <LayoutItem Id="TelephoneNumber" ViewItem="TelephoneNumber" ShowCaption="" Index="2" IsNewNode="True" />
+                <LayoutItem Id="Address" Index="3" />
+              </LayoutGroup>
+              <LayoutGroup Id="Customer_col2">
+                <LayoutItem Id="IntegrationCode" Removed="True" />
+                <LayoutItem Id="IntegrationSource" Removed="True" />
+                <LayoutItem Id="TelephoneNumber" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
     <ListView Id="KpiDefinition_ListView">
       <Columns>
         <ColumnInfo Id="Name" Width="297" SortOrder="Descending" />
@@ -123,6 +156,14 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Order_ListView">
+      <Columns>
+        <ColumnInfo Id="Id" Removed="True" />
+        <ColumnInfo Id="IntegrationCode" Removed="True" />
+        <ColumnInfo Id="IntegrationSource" Removed="True" />
+        <ColumnInfo Id="OrderSurvey" Removed="True" />
+      </Columns>
+    </ListView>
     <DetailView Id="ReportDataV2_DetailView">
       <Layout>
         <LayoutGroup Id="Main">
