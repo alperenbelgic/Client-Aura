@@ -51,7 +51,49 @@ namespace Solution1.Module.Controllers
             _NewObjectViewController = Frame.GetController<NewObjectViewController>();
             _NewObjectViewController.ObjectCreated += _NewObjectViewController_ObjectCreated;
 
+            this.ObjectSpace.ObjectChanged += ObjectSpace_ObjectChanged;
+            
+
             ArrangeUI();
+        }
+
+        private void ObjectSpace_ObjectChanged(object sender, ObjectChangedEventArgs e)
+        {
+            if (e.PropertyName == "OrderSurvey.Survey")
+            {
+                // because object changed event triggerd before object changed, we subscribe object's property change event
+                this.CurrentOrderObject.OrderSurvey.PropertyChanged += OrderSurvey_PropertyChanged;
+            }
+        }
+
+        private void OrderSurvey_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Survey")
+            {
+                this.CurrentOrderObject.OrderSurvey.SurveySendingDays = 
+                this.CurrentOrderObject.OrderSurvey.Survey.SurveySendingDays;
+
+                this.CurrentOrderObject.OrderSurvey.PropertyChanged -= OrderSurvey_PropertyChanged;
+            }
+        }
+
+        private void UpdateSurveySendingDaysFromEditorValues()
+        {
+            var detaiilView = this.View as DetailView;
+            if (detaiilView != null)
+            {
+                var propertyEditors = detaiilView.GetItems<PropertyEditor>();
+                var surveyEditor = propertyEditors.FirstOrDefault(pe => pe.Id == "OrderSurvey.Survey");
+                var surveySendingDaysEditor = propertyEditors.FirstOrDefault(pe => pe.Id == "OrderSurvey.SurveySendingDays");
+                if (surveyEditor != null && surveySendingDaysEditor != null)
+                {
+                    var surveyDefinition = surveyEditor.PropertyValue as SurveyDefinition;
+                    if (surveyDefinition != null)
+                    {
+                        surveySendingDaysEditor.PropertyValue = surveyDefinition.SurveySendingDays;
+                    }
+                }
+            }
         }
 
         private void ArrangeUI()
@@ -113,7 +155,11 @@ namespace Solution1.Module.Controllers
         protected override void OnDeactivated()
         {
             _NewObjectViewController.ObjectCreated -= _NewObjectViewController_ObjectCreated;
+
             ResetSaveButtonCaption();
+
+            this.ObjectSpace.ObjectChanged -= ObjectSpace_ObjectChanged;
+
             // Unsubscribe from previously subscribed events and release other references and resources.
             base.OnDeactivated();
         }

@@ -83,7 +83,7 @@
     </ListView>
     <DetailView Id="Order_DetailView">
       <Items>
-        <PropertyEditor Id="OrderSurvey.Survey" Caption="Survey" PropertyName="OrderSurvey.Survey" IsNewNode="True" />
+        <PropertyEditor Id="OrderSurvey.Survey" Caption="Survey" PropertyName="OrderSurvey.Survey" ImmediatePostData="True" IsNewNode="True" />
         <PropertyEditor Id="OrderSurvey.SurveySendingDays" PropertyName="OrderSurvey.SurveySendingDays" IsNewNode="True" />
       </Items>
       <Layout>

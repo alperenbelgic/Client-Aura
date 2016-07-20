@@ -8,14 +8,38 @@ using System.Threading.Tasks;
 
 namespace Solution1.Module.BusinessObjects
 {
-    public class OrderSurvey : IBusinessObject
+    public class OrderSurvey : IBusinessObject, INotifyPropertyChanged
     {
         [Browsable(false)]
         [Key]
         public int Id { get; set; }
-        
-        public virtual SurveyDefinition Survey { get; set; }
+
+        private SurveyDefinition _Survey = null;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+        private void OnPropertyChanged(string propertyName)
+        {
+            if (this.PropertyChanged != null)
+            {
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+            }
+        }
+
+        public virtual SurveyDefinition Survey
+        {
+            get
+            {
+                return this._Survey;
+            }
+            set
+            {
+                this._Survey = value;
+                OnPropertyChanged("Survey");
+            }
+        }
 
         public int SurveySendingDays { get; set; }
+
+
     }
 }
