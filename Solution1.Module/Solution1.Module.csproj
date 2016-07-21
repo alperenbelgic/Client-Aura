@@ -171,8 +171,10 @@
     <Compile Include="BusinessObjects\General\Parameter.cs" />
     <Compile Include="BusinessObjects\Order\Product.cs" />
     <Compile Include="BusinessObjects\Survey\OrderSurvey.cs" />
+    <Compile Include="BusinessObjects\Survey\ProductAnswer.cs" />
     <Compile Include="BusinessObjects\Survey\QuestionDefinition.cs" />
     <Compile Include="BusinessObjects\Solution1DbContext.cs" />
+    <Compile Include="BusinessObjects\Survey\SurveyAnswer.cs" />
     <Compile Include="BusinessObjects\Survey\SurveyDefinition.cs" />
     <Compile Include="BusinessObjects\General\User.cs" />
     <Compile Include="Controllers\GeneralControllers\ActionContainerCustomiserController.cs">

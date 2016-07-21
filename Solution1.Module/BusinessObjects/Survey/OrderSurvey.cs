@@ -40,6 +40,18 @@ namespace Solution1.Module.BusinessObjects
 
         public int SurveySendingDays { get; set; }
 
+        [Browsable(false)]
+        public virtual List<SurveyAnswer> SurverAnswers { get; set; }
+
+        [Browsable(false)]
+        public virtual List<ProductAnswer> ProductAnswers { get; set; }
+
+        [Browsable(false)]
+        public DateTime? AnswerDate { get; set; }
+
+        [Browsable(false)]
+        public bool HasSent { get; set; }
+
 
     }
 }
