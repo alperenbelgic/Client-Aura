@@ -1,5 +1,6 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
+using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
 using System;
 using System.Collections.Generic;
@@ -13,7 +14,7 @@ using System.Threading.Tasks;
 namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
-    public class SurveyDefinition : IBusinessObject, IXafEntityObject, IObjectSpaceLink
+    public class SurveyDefinition : IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
     {
         [Browsable(false)]
         [Key]
@@ -29,6 +30,9 @@ namespace Solution1.Module.BusinessObjects
 
         [Browsable(false)]
         public virtual Company Company { get; set; }
+
+        [Browsable(false)]
+        public bool IsDeleted { get; set; }
 
         public virtual List<QuestionDefinition> Questions { get; set; }
 

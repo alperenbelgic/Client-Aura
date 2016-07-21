@@ -205,6 +205,12 @@
     <Compile Include="Controllers\OrderController.Designer.cs">
       <DependentUpon>OrderController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\SurveyDefinitionViewController.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controllers\SurveyDefinitionViewController.Designer.cs">
+      <DependentUpon>SurveyDefinitionViewController.cs</DependentUpon>
+    </Compile>
     <Compile Include="DatabaseUpdate\Updater.cs" />
     <Compile Include="Helper\ApplicationHelper.cs" />
     <Compile Include="Helper\Constants.cs" />
@@ -226,6 +232,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controllers\OrderController.resx">
       <DependentUpon>OrderController.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controllers\SurveyDefinitionViewController.resx">
+      <DependentUpon>SurveyDefinitionViewController.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Model.DesignedDiffs.xafml">
       <SubType>Designer</SubType>

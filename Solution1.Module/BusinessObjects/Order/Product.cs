@@ -1,6 +1,7 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
+using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
 using System;
 using System.Collections.Generic;
@@ -16,7 +17,7 @@ namespace Solution1.Module.BusinessObjects
 
     [DefaultClassOptions]
     [XafDefaultProperty("ProductName")]
-    public class Product : IIntegrationItem, IBusinessObject, IXafEntityObject, IObjectSpaceLink
+    public class Product : IIntegrationItem, IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
     {
         [Browsable(false)]
         [Key]
@@ -74,6 +75,9 @@ namespace Solution1.Module.BusinessObjects
                 objectSpace = value;
             }
         }
+
+        [Browsable(false)]
+        public bool IsDeleted { get; set; }
 
         public void OnCreated()
         {

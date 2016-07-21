@@ -1,5 +1,5 @@
 ﻿YAPILACAKLAR
-- answer type da yeni ekleme olmasin
-- hic bi alan bos gecilemez validasyonu
 
 TAMAMLANANLAR
+- answer type da yeni ekleme olmasin
+- hic bi alan bos gecilemez validasyonu

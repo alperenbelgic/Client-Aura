@@ -1,5 +1,7 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Validation;
+using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
 using System;
 using System.Collections.Generic;
@@ -12,37 +14,51 @@ using System.Threading.Tasks;
 
 namespace Solution1.Module.BusinessObjects
 {
-    
-    public class QuestionDefinition : IBusinessObject
+
+    public class QuestionDefinition : IBusinessObject, IHaveIsDeletedMember
     {
         [Browsable(false)]
         [Key]
         public int Id { get; set; }
 
+        [RuleRequiredField(CustomMessageTemplate = "Question Text should not be empty.", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string QuestionText { get; set; }
 
+        [RuleRequiredField(CustomMessageTemplate = "Answer Type should not be empty.", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public virtual Parameter AnswerType { get; set; }
 
+        [RuleRequiredField(CustomMessageTemplate = "Multiple Choice Options Definition should not be empty.", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public virtual MultipleChoiceOptionsDefinition MultipleChoiceOptionsDefinition { get; set; }
+
+        [Browsable(false)]
+        public bool IsDeleted { get; set; }
     }
 
     [DefaultClassOptions]
-    public class ProductQuestionDefinition : IBusinessObject
+    public class ProductQuestionDefinition : IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
     {
 
         [Browsable(false)]
         [Key]
         public int Id { get; set; }
 
+        [RuleRequiredField(CustomMessageTemplate = "Question Text should not be empty.", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string QuestionText { get; set; }
 
-
+        [RuleRequiredField(CustomMessageTemplate = "Answer Type should not be empty.", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public virtual Parameter AnswerType { get; set; }
 
+        [RuleRequiredField(CustomMessageTemplate = "Multiple Choice Options Definition should not be empty.", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public virtual MultipleChoiceOptionsDefinition MultipleChoiceOptionsDefinition { get; set; }
 
         [Browsable(false)]
+        public virtual List<Product> Products { get; set; }
+
+        [Browsable(false)]
         public virtual Company Company { get; set; }
+
+        [Browsable(false)]
+        public bool IsDeleted { get; set; }
 
         private IObjectSpace objectSpace = null;
         [NotMapped]

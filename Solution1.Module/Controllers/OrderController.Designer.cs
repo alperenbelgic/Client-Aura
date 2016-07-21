@@ -58,6 +58,7 @@
             this.Actions.Add(this.StartFeedbackProcess);
             this.Actions.Add(this.StopProcessAndEdit);
             this.TargetObjectType = typeof(Solution1.Module.BusinessObjects.Order);
+            this.TypeOfView = typeof(DevExpress.ExpressApp.View);
 
         }
 

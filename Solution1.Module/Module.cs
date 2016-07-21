@@ -17,6 +17,9 @@ using System.Data.Entity;
 using Solution1.Module.BusinessObjects;
 using DevExpress.Persistent.BaseImpl.EF.Kpi;
 using DevExpress.ExpressApp.ReportsV2;
+using DevExpress.ExpressApp.Validation;
+using Solution1.Module.Controllers;
+using DevExpress.Persistent.Validation;
 
 namespace Solution1.Module {
     // For more typical usage scenarios, be sure to check out https://documentation.devexpress.com/eXpressAppFramework/clsDevExpressExpressAppModuleBasetopic.aspx.
@@ -58,6 +61,7 @@ namespace Solution1.Module {
             base.Setup(moduleManager);
 			ReportsModuleV2 reportModule = moduleManager.Modules.FindModule<ReportsModuleV2>();
             reportModule.ReportDataType = typeof(DevExpress.Persistent.BaseImpl.EF.ReportDataV2);
+            ValidationRulesRegistrator.RegisterRule(moduleManager, typeof(DeleteSurveyDefinitionValidationRule), typeof(IRuleBaseProperties));
 		}
     }
 }

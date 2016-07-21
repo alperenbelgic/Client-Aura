@@ -1,9 +1,9 @@
 ﻿YAPILACAKLAR
 - anketlerde preview yapisi
+- bir company icin en az bir Survey Definition olmali
+
+
+TAMAMLANANLAR
 - is default alani degistirilemez olsun, action ile is default 1 yapilsin, diger anketlerin is default lari kaldirilsin
 - survey kac gun sonra gonderilecek alani eklensin
 
-TAMAMLANANLAR
-
-VALIDASYON
-- bir company icin en az bir validasyon olmali

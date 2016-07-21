@@ -1,6 +1,7 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
+using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ using System.Threading.Tasks;
 namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
-    public class Customer : IIntegrationItem, IBusinessObject, IXafEntityObject, IObjectSpaceLink
+    public class Customer : IIntegrationItem, IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
     {
         [Browsable(false)]
         [Key]
@@ -34,6 +35,9 @@ namespace Solution1.Module.BusinessObjects
 
         [Browsable(false)]
         public virtual Company Company { get; set; }
+
+        [Browsable(false)]
+        public bool IsDeleted { get; set; }
 
         public string IntegrationSource
         {

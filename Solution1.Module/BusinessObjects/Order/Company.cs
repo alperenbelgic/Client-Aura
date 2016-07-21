@@ -1,5 +1,6 @@
 ﻿using DevExpress.Persistent.Base;
 using DevExpress.Persistent.BaseImpl.EF;
+using Solution1.Module.BusinessObjects.General;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +14,7 @@ namespace Solution1.Module.BusinessObjects
     [DefaultProperty("FullName")]
     [DefaultClassOptions]
 
-    public class Company : IBusinessObject
+    public class Company : IBusinessObject, IHaveIsDeletedMember
     {
 
         [Key]
@@ -32,7 +33,8 @@ namespace Solution1.Module.BusinessObjects
 
         public bool IsCompanyActive { get; set; }
 
-        public int SurveySendingDays { get; set; }
+        [Browsable(false)]
+        public bool IsDeleted { get; set; }
 
     }
 }

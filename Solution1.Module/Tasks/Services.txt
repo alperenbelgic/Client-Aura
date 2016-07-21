@@ -2,4 +2,5 @@
 	+ get orders that are ready
 	- create mail content for the survey
 	- create survey instance content
+	- survey content serving page (not a service)
 - create answers on the survey instance when survey answered

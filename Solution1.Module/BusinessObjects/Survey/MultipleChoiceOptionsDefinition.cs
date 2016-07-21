@@ -1,6 +1,8 @@
 ﻿using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
+using DevExpress.Persistent.Validation;
+using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
 using System;
 using System.Collections.Generic;
@@ -15,7 +17,7 @@ namespace Solution1.Module.BusinessObjects
 {
     [DefaultClassOptions]
     [XafDefaultProperty("OptionsContent")]
-    public class MultipleChoiceOptionsDefinition : IBusinessObject, IXafEntityObject, IObjectSpaceLink
+    public class MultipleChoiceOptionsDefinition : IBusinessObject, IXafEntityObject, IObjectSpaceLink,  IHaveIsDeletedMember
     {
         [Browsable(false)]
         [Key]
@@ -34,14 +36,22 @@ namespace Solution1.Module.BusinessObjects
             }
         }
 
+        [RuleRequiredField(CustomMessageTemplate = "Option 1", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string Option1 { get; set; }
+        [RuleRequiredField(CustomMessageTemplate = "Option 2", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string Option2 { get; set; }
+        [RuleRequiredField(CustomMessageTemplate = "Option 3", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string Option3 { get; set; }
+        [RuleRequiredField(CustomMessageTemplate = "Option 4", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string Option4 { get; set; }
+        [RuleRequiredField(CustomMessageTemplate = "Option 5", SkipNullOrEmptyValues = false, TargetContextIDs = "Save")]
         public string Option5 { get; set; }
 
         [Browsable(false)]
         public Company Company { get; set; }
+
+        [Browsable(false)]
+        public bool IsDeleted { get; set; }
 
         private IObjectSpace objectSpace = null;
         [NotMapped]

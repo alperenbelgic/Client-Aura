@@ -1,8 +1,10 @@
 ﻿YAPILACAKLAR
-- System alt menusu sadece admine gorunsun
 - info kontroller yapisi. basildiginda sayfayla alakali bilgilendirme icerigi goruntulenecek
+- Low Priority: IsDeleted true detail view'larinda yeniden aktiflestir gibi bir buton
 
 TAMAMLANANLAR
 - Parametreleri normal yetkilerdeki kullanicilar sadece gorebilsin, editleyemesin
 - IsDeleted alani olan modeller listelenirken bu alan false olanlar listelensin
 - IHaveIsDeleted interface inin implement eden modellerin silme islemlerinde bu alan set edilerek ilerlensin ve silme davranisi olussun
+- System alt menusu sadece admine gorunsun
+

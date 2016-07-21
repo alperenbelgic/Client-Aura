@@ -1,3 +1,4 @@
 YAPILACAKLAR
+
+TAMAMLANANLAR
 - ara obje eklensin, sorular icin
-- Integration code / source asagiya alinabilir

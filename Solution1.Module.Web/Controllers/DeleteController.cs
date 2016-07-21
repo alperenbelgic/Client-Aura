@@ -50,6 +50,8 @@ namespace Solution1.Module.Web.Controllers
             {
                 if (this.View.CurrentObject is IHaveIsDeletedMember)
                 {
+                    Validator.RuleSet.Validate(this.View.ObjectSpace, this.View.CurrentObject, "Delete");
+
                     SetIsDeletedTrue(this.View.CurrentObject);
                     this.ObjectSpace.CommitChanges();
                     this.View.Close();
@@ -68,11 +70,13 @@ namespace Solution1.Module.Web.Controllers
                 {
                     foreach (var item in (this.View as ListView).SelectedObjects)
                     {
+                        Validator.RuleSet.Validate(this.View.ObjectSpace, item, "Delete");
+
                         SetIsDeletedTrue(item);
+                        this.ObjectSpace.CommitChanges();
+                        this.View.Refresh();
+
                     }
-                    this.ObjectSpace.CommitChanges();
-                    this.View.Refresh();
-                    ApplicationHelper.ShowInfoPopup(this.Application, "Objects have been archieved.");
                 }
                 else
                 {

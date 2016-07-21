@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Application Title="Client Aura Management App" Company="Client Aura" Copyright="" Description="" AboutInfoString="{0:ProductName}&lt;br&gt;{0:Version}">
   <ActionDesign>
+    <Actions>
+      <Action Id="Link" Caption="Add" />
+      <Action Id="Unlink" Caption="Remove" />
+    </Actions>
     <ActionToContainerMapping>
       <ActionContainer Id="Save">
         <ActionLink ActionId="Save" Removed="True" />
@@ -24,6 +28,11 @@
     <Class Name="Solution1.Module.BusinessObjects.QuestionDefinition">
       <OwnMembers>
         <Member Name="AnswerType" DataSourceCriteria="[ParameterGroupKey] = 'AnswerType'" />
+      </OwnMembers>
+    </Class>
+    <Class Name="Solution1.Module.BusinessObjects.SurveyDefinition">
+      <OwnMembers>
+        <Member Name="IsDefault" AllowEdit="False" />
       </OwnMembers>
     </Class>
   </BOModel>
@@ -84,7 +93,7 @@
           <LayoutGroup Id="SimpleEditors">
             <LayoutGroup Id="Customer">
               <LayoutGroup Id="Customer_col1" RelativeSize="100">
-                <LayoutItem Id="TelephoneNumber" ViewItem="TelephoneNumber" ShowCaption="" Index="2" IsNewNode="True" />
+                <LayoutItem Id="TelephoneNumber" ViewItem="TelephoneNumber" Index="2" IsNewNode="True" />
                 <LayoutItem Id="Address" Index="3" />
               </LayoutGroup>
               <LayoutGroup Id="Customer_col2">
@@ -97,6 +106,12 @@
         </LayoutGroup>
       </Layout>
     </DetailView>
+    <ListView Id="Customer_ListView">
+      <Columns>
+        <ColumnInfo Id="IntegrationCode" Index="-1" />
+        <ColumnInfo Id="IntegrationSource" Index="-1" />
+      </Columns>
+    </ListView>
     <ListView Id="KpiDefinition_ListView">
       <Columns>
         <ColumnInfo Id="Name" Width="297" SortOrder="Descending" />
@@ -112,6 +127,38 @@
         <ColumnInfo Id="MeasurementFrequency" Index="8" Width="48" />
         <ColumnInfo Id="Direction" Index="9" Width="48" />
         <ColumnInfo Id="Period" Index="10" Width="48" />
+      </Columns>
+    </ListView>
+    <DetailView Id="MultipleChoiceOptionsDefinition_DetailView">
+      <Layout>
+        <LayoutGroup Id="Main">
+          <LayoutGroup Id="SimpleEditors">
+            <LayoutGroup Id="MultipleChoiceOptionsDefinition">
+              <LayoutGroup Id="MultipleChoiceOptionsDefinition_col1" RelativeSize="100">
+                <LayoutItem Id="OptionsContent" Index="0" />
+                <LayoutItem Id="Option1" Index="1" />
+                <LayoutItem Id="Option2" Index="2" />
+                <LayoutItem Id="Option3" ViewItem="Option3" Index="3" IsNewNode="True" />
+                <LayoutItem Id="Option4" ViewItem="Option4" Index="4" IsNewNode="True" />
+                <LayoutItem Id="Option5" ViewItem="Option5" Index="5" IsNewNode="True" />
+              </LayoutGroup>
+              <LayoutGroup Id="MultipleChoiceOptionsDefinition_col2">
+                <LayoutItem Id="Option3" Removed="True" />
+                <LayoutItem Id="Option4" Removed="True" />
+                <LayoutItem Id="Option5" Removed="True" />
+              </LayoutGroup>
+            </LayoutGroup>
+          </LayoutGroup>
+        </LayoutGroup>
+      </Layout>
+    </DetailView>
+    <ListView Id="MultipleChoiceOptionsDefinition_ListView">
+      <Columns>
+        <ColumnInfo Id="Option1" Index="-1" />
+        <ColumnInfo Id="Option2" Index="-1" />
+        <ColumnInfo Id="Option3" Index="-1" />
+        <ColumnInfo Id="Option4" Index="-1" />
+        <ColumnInfo Id="Option5" Index="-1" />
       </Columns>
     </ListView>
     <DetailView Id="Order_DetailView">
