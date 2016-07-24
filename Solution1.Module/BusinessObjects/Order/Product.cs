@@ -3,6 +3,7 @@ using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
+using Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;

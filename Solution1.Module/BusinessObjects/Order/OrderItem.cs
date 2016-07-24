@@ -1,5 +1,6 @@
 ﻿using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
+using Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -51,5 +52,6 @@ namespace Solution1.Module.BusinessObjects
             }
         }
 
+       
     }
 }

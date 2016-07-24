@@ -3,6 +3,8 @@ using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
+using Solution1.Module.NonPersistentBusinessObjects;
+using Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,6 +23,9 @@ namespace Solution1.Module.BusinessObjects
         [Browsable(false)]
         [Key]
         public int Id { get; set; }
+
+        [Browsable(false)]
+        public Guid Guid { get; set; }
 
         public virtual Customer Customer { get; set; }
 
@@ -108,6 +113,11 @@ namespace Solution1.Module.BusinessObjects
                     this.OrderSurvey.Survey = defaultSurveyDefinition;
                     this.OrderSurvey.SurveySendingDays = defaultSurveyDefinition.SurveySendingDays;
                 }
+            }
+
+            if (this.Guid == default(Guid))
+            {
+                this.Guid = Guid.NewGuid();
             }
         }
 
@@ -217,6 +227,18 @@ namespace Solution1.Module.BusinessObjects
             .ToList();
 
             return surveySendingOrders;
+        }
+
+       
+
+        public static Order GetOrderByGuid(Guid guid)
+        {
+            var dbContext = SystemHelper.GetDbContext();
+
+            var order =
+            dbContext.Orders.FirstOrDefault(o => o.Guid == guid);
+
+            return order;
         }
     }
 

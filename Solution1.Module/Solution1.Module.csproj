@@ -217,6 +217,7 @@
     <Compile Include="Helper\ApplicationHelper.cs" />
     <Compile Include="Helper\Constants.cs" />
     <Compile Include="Helper\Dictionary.cs" />
+    <Compile Include="Helper\ParameterHelper.cs" />
     <Compile Include="Helper\Result.cs" />
     <Compile Include="Helper\SystemHelper.cs" />
     <Compile Include="Helper\UserHelper.cs" />
@@ -226,6 +227,8 @@
     <Compile Include="Module.Designer.cs">
       <DependentUpon>Module.cs</DependentUpon>
     </Compile>
+    <Compile Include="NonPersistentBusinessObjects\SurveyRenderers\IRenderer.cs" />
+    <Compile Include="NonPersistentBusinessObjects\SurveyRenderers\SurveyRenderFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

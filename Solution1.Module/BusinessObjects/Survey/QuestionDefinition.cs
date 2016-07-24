@@ -3,6 +3,7 @@ using DevExpress.Persistent.Base;
 using DevExpress.Persistent.Validation;
 using Solution1.Module.BusinessObjects.General;
 using Solution1.Module.Helper;
+using Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +16,7 @@ using System.Threading.Tasks;
 namespace Solution1.Module.BusinessObjects
 {
 
-    public class QuestionDefinition : IBusinessObject, IHaveIsDeletedMember
+    public class QuestionDefinition : IQuestion, IBusinessObject, IHaveIsDeletedMember
     {
         [Browsable(false)]
         [Key]
@@ -35,7 +36,7 @@ namespace Solution1.Module.BusinessObjects
     }
 
     [DefaultClassOptions]
-    public class ProductQuestionDefinition : IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
+    public class ProductQuestionDefinition : IQuestion,  IBusinessObject, IXafEntityObject, IObjectSpaceLink, IHaveIsDeletedMember
     {
 
         [Browsable(false)]
@@ -92,5 +93,17 @@ namespace Solution1.Module.BusinessObjects
         public void OnLoaded()
         {
         }
+    }
+
+    public interface IQuestion
+    {
+        int Id { get; set; }
+
+        string QuestionText { get; set; }
+
+        Parameter AnswerType { get; set; }
+
+        MultipleChoiceOptionsDefinition MultipleChoiceOptionsDefinition { get; set; }
+
     }
 }

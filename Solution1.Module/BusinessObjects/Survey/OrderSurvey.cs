@@ -41,7 +41,7 @@ namespace Solution1.Module.BusinessObjects
         public int SurveySendingDays { get; set; }
 
         [Browsable(false)]
-        public virtual List<SurveyAnswer> SurverAnswers { get; set; }
+        public virtual List<SurveyAnswer> SurveyAnswers { get; set; }
 
         [Browsable(false)]
         public virtual List<ProductAnswer> ProductAnswers { get; set; }
