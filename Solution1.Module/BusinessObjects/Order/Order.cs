@@ -1,4 +1,5 @@
-﻿using DevExpress.ExpressApp;
+﻿using DevExpress.Data.Filtering;
+using DevExpress.ExpressApp;
 using DevExpress.ExpressApp.DC;
 using DevExpress.Persistent.Base;
 using Solution1.Module.BusinessObjects.General;
@@ -229,16 +230,34 @@ namespace Solution1.Module.BusinessObjects
             return surveySendingOrders;
         }
 
-       
 
-        public static Order GetOrderByGuid(Guid guid)
+
+        public static Order GetOrderByGuid(Guid guid, Solution1DbContext dbContext = null)
         {
-            var dbContext = SystemHelper.GetDbContext();
+            if (dbContext == null)
+            {
+                dbContext = SystemHelper.GetDbContext();
+            }
 
             var order =
             dbContext.Orders.FirstOrDefault(o => o.Guid == guid);
 
             return order;
+        }
+
+        public static Order GetOrderByGuid(Guid guid, IObjectSpace objectSpace = null)
+        {
+            if (objectSpace == null)
+            {
+                objectSpace = SystemHelper.GetObjectSpace();
+            }
+
+            return
+            objectSpace.FindObject<Order>(
+                CriteriaOperator.And(
+                    new BinaryOperator("Guid", guid)
+                    )
+                    );
         }
     }
 

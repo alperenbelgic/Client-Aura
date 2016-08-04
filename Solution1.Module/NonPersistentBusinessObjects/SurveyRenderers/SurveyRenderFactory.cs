@@ -14,11 +14,12 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
         {
             var surveyRenderer = new SurveyRenderer();
             surveyRenderer.Questions = new List<IQuestionRenderer>();
+            surveyRenderer.SurveyTitle = order.OrderSurvey.Survey.SurveyName;
 
             foreach (var question in order.OrderSurvey.Survey.Questions)
             {
                 IQuestionRenderer questionRenderer = new QuestionRenderer();
-                questionRenderer.QuestionId = question.Id.ToString();
+                questionRenderer.QuestionId = "survey_" + question.Id.ToString();
                 questionRenderer.QuestionText = question.QuestionText;
 
                 IAnswerRenderer answerRenderer = null;
@@ -32,7 +33,7 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
                             Option3 = question.MultipleChoiceOptionsDefinition.Option3,
                             Option4 = question.MultipleChoiceOptionsDefinition.Option4,
                             Option5 = question.MultipleChoiceOptionsDefinition.Option5,
-                            QuestionId = question.Id.ToString(),
+                            QuestionId = "survey_" + question.Id.ToString(),
                             SelectedOptionNumber = GetMultipleChoiceResult(order, question)
 
                         };
@@ -65,7 +66,7 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
                     {
                         IQuestionRenderer questionRenderer = new QuestionRenderer();
 
-                        questionRenderer.QuestionId = question.Id.ToString();
+                        questionRenderer.QuestionId = "product_" + orderItem.Product.Id + "_" + question.Id.ToString();
                         questionRenderer.QuestionText = question.QuestionText;
 
                         IAnswerRenderer answerRenderer = null;
@@ -79,7 +80,7 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
                                     Option3 = question.MultipleChoiceOptionsDefinition.Option3,
                                     Option4 = question.MultipleChoiceOptionsDefinition.Option4,
                                     Option5 = question.MultipleChoiceOptionsDefinition.Option5,
-                                    QuestionId = question.Id.ToString(),
+                                    QuestionId = "product_" + orderItem.Product.Id + "_" + question.Id.ToString(),
                                     SelectedOptionNumber = GetMultipleChoiceResult(order, question)
                                 };
 
@@ -99,7 +100,7 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
                             questionRenderer.AnswerRenderer = answerRenderer;
                             surveyRenderer.Questions.Add(questionRenderer);
                         }
-                    } 
+                    }
                 }
             }
 

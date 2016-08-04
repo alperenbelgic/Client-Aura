@@ -13,6 +13,15 @@ namespace Survey.UI {
     public partial class SurveyPage {
         
         /// <summary>
+        /// orderGuid control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField orderGuid;
+        
+        /// <summary>
         /// literalSurveyContent control.
         /// </summary>
         /// <remarks>

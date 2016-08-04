@@ -14,20 +14,41 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
     public class SurveyRenderer : ISurveyRenderer
     {
         public IList<IQuestionRenderer> Questions { get; set; }
+        public string SurveyTitle { get; set; }
+        public string Logo { get; set; }
 
-        public string Render()
+        private string RenderQuestions()
         {
             var stringBuilder = new StringBuilder();
             foreach (var question in Questions)
             {
                 stringBuilder.Append(question.Render());
             }
-            return SurveyTemplate.Replace("[content]", stringBuilder.ToString());
+            return stringBuilder.ToString();
+        }
+
+        public string Render()
+        {
+            var surveyContent = new StringBuilder(SurveyTemplate);
+
+            string questionContent = RenderQuestions();
+            surveyContent = surveyContent.Replace("[content]", questionContent);
+
+            surveyContent = surveyContent.Replace("[surveyTitle]", this.SurveyTitle);
+
+            surveyContent = surveyContent.Replace("[imageContent]", this.Logo);
+
+            return surveyContent.ToString();
         }
 
         private const string SurveyTemplate =
             @"
-<div class=""survey"" >[content]</div>
+
+<div class=""survey"" >
+    <div class=""surveyImageWrapper""><div class=""surveyImage""> <img src=""/assets/images/your-logo.png""/></div></div>
+    <div class=""surveyTitleWrapper""><div class=""surveyTitle"">[surveyTitle]</div></div>
+    [content]
+</div>
 ";
     }
 
@@ -58,9 +79,10 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
 
         private const string Template =
 @"
-<div class=""questionContainer""  name=""[questionId]"" id=""[questionId]"" >
+<div class=""questionContainer""   id=""[questionId]"" >
     <div class=""questionLabel"" >[questionText]</div>
     <div class=""answerContainer"">[answerContainer]</div>
+    <div style=""clear:both;""></div>
 </div>
 ";
     }
@@ -96,24 +118,26 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
         {
             var optionsContent = new StringBuilder();
             var options = new List<string> { Option1, Option2, Option3, Option4, Option5 };
+            options.Reverse();
             for (int i = 0; i < options.Count; i++)
             {
-                int optionNumber = i + 1;
+                int optionNumber = 5 - i;
                 string option = options[i];
 
                 string content =
                      OptionTemplate
                      .Replace("[questionId]", this.QuestionId)
                      .Replace("[optionText]", option)
-                     .Replace("[value]", this.QuestionId);
+                     .Replace("[value]", this.QuestionId)
+                     .Replace("[optionNumber]", optionNumber.ToString());
 
                 if (SelectedOptionNumber == optionNumber)
                 {
-                    content = content.Replace("[content]", @" checked=""checked"" ");
+                    content = content.Replace("[checked]", @" checked=""checked"" ");
                 }
                 else
                 {
-                    content = content.Replace("[content]", "");
+                    content = content.Replace("[checked]", "");
                 }
 
                 optionsContent.Append(content);
@@ -124,10 +148,15 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
 
         public const string OptionTemplate =
 @"
-<div class=""multipleChoiceOption"" >
-    <input type=""radio"" name=""[questionId]"" value=""[value]"" [checked] />
-    <div class=""optionText"" >[optionText]</div>
-</div>
+
+<ul>
+  <li>
+    <input type=""radio"" name=""[questionId]"" value=""[value]"" id=""[questionId]_[optionNumber]"" [checked] />
+    <label for=""[questionId]_[optionNumber]"">[optionText]</label>
+    <div class=""check""></div>
+  </li>
+</ul>
+
 ";
 
         public const string WrapperTemplate =
@@ -154,9 +183,7 @@ namespace Solution1.Module.NonPersistentBusinessObjects.SurveyRenderers
 
 
         public const string MultiLineTextTemplate = @"
-<textarea rows=""[rows]"" cols=""[cols]]"">
-[value]
-</textarea>
+<textarea rows=""[rows]"" class=""ca-text-area form-control"" >[value]</textarea>
 ";
     }
 }

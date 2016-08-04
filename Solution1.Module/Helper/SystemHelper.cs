@@ -1,4 +1,6 @@
-﻿using Solution1.Module.BusinessObjects;
+﻿using DevExpress.ExpressApp;
+using DevExpress.ExpressApp.EF;
+using Solution1.Module.BusinessObjects;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,12 @@ namespace Solution1.Module.Helper
             var dbContext = new Solution1DbContext(GeneralKeys.GetConnectionString());
 
             return dbContext;
+        }
+
+        public static IObjectSpace GetObjectSpace()
+        {
+            EFObjectSpaceProvider osProvider = new EFObjectSpaceProvider(typeof(Solution1DbContext), GeneralKeys.GetConnectionString());
+            return osProvider.CreateObjectSpace();
         }
     }
 }

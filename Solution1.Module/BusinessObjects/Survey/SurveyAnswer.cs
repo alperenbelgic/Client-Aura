@@ -10,7 +10,7 @@ namespace Solution1.Module.BusinessObjects
     {
         public int Id { get; set; }
 
-        public QuestionDefinition Question { get; set; }
+        public virtual QuestionDefinition Question { get; set; }
 
         public int MultipleChoiceResult { get; set; }
 
