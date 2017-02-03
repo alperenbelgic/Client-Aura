@@ -74,6 +74,7 @@ public partial class ErrorPage : System.Web.UI.Page
         {
             ErrorHandling.SendAlertToAdmin(errorInfo.Id, DescriptionTextBox.Text, errorInfo.Exception.Message);
             ErrorHandling.ClearApplicationError();
+            // if(this){then.that()}
             ApologizeMessage.Visible = false;
             ReportForm.Visible = false;
             Details.Visible = false;
